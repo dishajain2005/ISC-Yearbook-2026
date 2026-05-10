@@ -1,0 +1,325 @@
+/* ==============================
+   HOME PAGE
+   ============================== */
+
+   .home-page {
+    min-height: 100vh;
+    background: var(--black);
+  }
+  
+  /* ── Navbar ── */
+  .home-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 3rem; /* Increased padding */
+    background: rgba(10, 12, 16, 0.92);
+    border-bottom: 1px solid var(--gold-border);
+    backdrop-filter: blur(12px);
+  }
+  .home-nav-brand {
+    font-family: var(--ff-display);
+    font-size: 20px; /* Increased from 18px */
+    letter-spacing: 0.2em;
+    color: var(--gold);
+  }
+  .home-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .home-nav-pill {
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    font-size: 13px; /* Increased */
+    letter-spacing: 0.06em;
+    color: var(--cream);
+    padding: 6px 16px;
+  }
+  .home-nav-email {
+    font-size: 12px; /* Increased */
+    color: var(--text-dim);
+  }
+  
+  /* ── Hero ── */
+  .home-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 60px);
+  }
+  .home-hero-left {
+    padding: 4rem 2rem 3rem clamp(3rem, 6vw, 5.5rem); /* Gave it more breathing room */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .home-hero-eyebrow {
+    font-size: 11px; /* Increased from 9px */
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .home-hero-eyebrow::before {
+    content: '';
+    width: 36px; height: 1px;
+    background: var(--gold);
+    display: inline-block;
+  }
+  
+  .home-title {
+    font-family: var(--ff-display);
+    font-size: clamp(72px, 10vw, 110px); /* Scaled up */
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 24px; /* Increased spacing */
+  }
+  .home-title .t-white  { color: var(--white); display: block; }
+  .home-title .t-gold   { color: var(--gold);  display: block; }
+  .home-title .t-outline {
+    -webkit-text-stroke: 1.5px rgba(255,255,255,0.25); /* Made outline thicker/brighter */
+    color: transparent;
+    display: block;
+  }
+  
+  /* Brightened and enlarged Tagline */
+  .home-tagline {
+    font-family: var(--ff-serif);
+    font-style: italic;
+    font-size: clamp(18px, 2.2vw, 22px); /* Scaled up */
+    color: #ffffff; /* Changed from muted to pure white */
+    max-width: 480px; /* Widened to fit the larger text */
+    line-height: 1.7;
+    border-left: 3px solid rgba(212,175,55,0.5); /* Stronger border */
+    padding-left: 20px;
+    margin-bottom: 3rem;
+  }
+  
+  /* ── Hero right — floating cards ── */
+  .home-hero-right {
+    position: relative;
+    overflow: hidden;
+    border-left: 1px solid var(--gold-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Added subtle glow to fill dead space */
+  .hero-right-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 65%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-bg-num {
+    font-family: var(--ff-display);
+    font-size: clamp(160px, 22vw, 280px); /* Scaled up */
+    color: rgba(212,175,55,0.03);
+    letter-spacing: -8px;
+    user-select: none;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-cards-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Changed from flex-end to center them in the space */
+    justify-content: center;
+    gap: 20px; /* Increased gap */
+    padding: 2rem 2rem;
+    z-index: 2;
+  }
+  .hero-card {
+    background: var(--navy);
+    border: 1px solid var(--gold-border);
+    border-left: 4px solid var(--gold); /* Thicker accent line */
+    padding: 18px 28px; /* Increased padding */
+    width: 220px; /* Widened the cards significantly */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Added shadow for depth */
+  }
+  .hero-card-n {
+    font-family: var(--ff-display);
+    font-size: 46px; /* Increased from 32px */
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hero-card-l {
+    font-size: 11px; /* Increased from 8px */
+    letter-spacing: 0.25em;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+  
+  /* Float animations */
+  @keyframes floatA { 0%,100% { transform: translateY(0); }  50% { transform: translateY(-12px); } }
+  @keyframes floatB { 0%,100% { transform: translateY(-8px); } 50% { transform: translateY(8px); } }
+  .hero-card:nth-child(1) { animation: floatA 4s ease-in-out infinite; margin-right: 60px; } /* Staggered them visually */
+  .hero-card:nth-child(2) { animation: floatB 5s ease-in-out infinite; margin-left: 80px; }
+  .hero-card:nth-child(3) { animation: floatA 4.5s ease-in-out infinite; margin-right: 30px; }
+  
+  /* ── Sport marquee strip ── */
+  .sport-strip {
+    overflow: hidden;
+    border-top: 1px solid var(--gold-border);
+    border-bottom: 1px solid var(--gold-border);
+    background: var(--navy);
+    padding: 14px 0; /* Thicker strip */
+  }
+  .strip-track {
+    display: flex;
+    gap: 3.5rem;
+    animation: marquee 22s linear infinite;
+    white-space: nowrap;
+  }
+  .strip-track span {
+    font-family: var(--ff-display);
+    font-size: 16px; /* Increased */
+    letter-spacing: 0.22em;
+    color: rgba(212,175,55,0.6); /* Brightened slightly */
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .strip-track span::before {
+    content: '◆';
+    font-size: 8px;
+    color: var(--gold);
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  
+  /* ── Contribute section ── */
+  .home-contribute {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: clamp(4rem, 6vw, 6rem) clamp(3rem, 6vw, 5.5rem);
+    border-top: 1px solid rgba(212,175,55,0.07);
+  }
+  .contribute-label {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .contribute-label::before { content: '—'; color: var(--gold-mid); }
+  .contribute-h {
+    font-family: var(--ff-display);
+    font-size: clamp(36px, 5vw, 52px); /* Scaled up */
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .contribute-p {
+    font-size: 15px; /* Increased */
+    color: var(--text-muted);
+    line-height: 1.85;
+    max-width: 460px;
+    margin-bottom: 2.2rem;
+  }
+  .contribute-card {
+    background: var(--navy);
+    border: 1px solid var(--gold-border);
+    padding: 2.5rem; /* Increased padding */
+    position: relative;
+    overflow: hidden;
+  }
+  .contribute-card::after {
+    content: 'MEMORY';
+    position: absolute;
+    bottom: -18px; right: -12px;
+    font-family: var(--ff-display);
+    font-size: 90px; /* Increased */
+    color: rgba(212,175,55,0.04);
+    letter-spacing: 0.1em;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .contribute-card-icon {
+    width: 48px; height: 48px;
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .contribute-card h3 {
+    font-family: var(--ff-display);
+    font-size: 26px; /* Increased */
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .contribute-card p {
+    font-size: 14px; /* Increased */
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1.8rem;
+  }
+  
+  /* ── Footer ── */
+  .home-footer {
+    border-top: 1px solid var(--gold-border);
+    padding: 1.5rem clamp(3rem, 6vw, 5.5rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home-footer p {
+    font-size: 12px; /* Increased */
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+  }
+  /* Paste this into HomePage.css, just before the @media (max-width: 860px) block */
+
+.home-nav-logout {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--text-dim);
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  padding: 6px 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.home-nav-logout:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212, 175, 55, 0.06);
+}
+  
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .home-hero { grid-template-columns: 1fr; }
+    .home-hero-right { display: none; }
+    .home-contribute { grid-template-columns: 1fr; gap: 2rem; }
+    .home-nav { padding: 16px 2rem; }
+  }
