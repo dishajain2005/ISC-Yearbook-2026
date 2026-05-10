@@ -623,3 +623,192 @@
   .home-footer { padding: 10px 3rem; }
   .home-footer p { font-size: 9px; }
 }
+
+/* =========================================
+   MOBILE FIXES
+   ========================================= */
+@media (max-width: 859px) {
+
+  /* Allow scrolling on mobile */
+  .home-page {
+    height: auto;
+    min-height: 100dvh;
+    max-height: none;
+    overflow-y: auto;
+  }
+
+  /* Hero should start from top instead of centered */
+  .home-hero {
+    justify-content: flex-start;
+    padding: 18px 18px 28px;
+    overflow: visible;
+  }
+
+  /* Reduce giant watermark */
+  .hero-bg-num {
+    font-size: clamp(80px, 28vw, 120px);
+    top: 42%;
+  }
+
+  /* Slightly smaller hero width */
+  .home-hero-left {
+    max-width: 100%;
+  }
+
+  /* Eyebrow */
+  .home-hero-eyebrow {
+    margin-bottom: 10px;
+    font-size: 8px;
+    letter-spacing: 0.24em;
+  }
+
+  .home-hero-eyebrow::before,
+  .home-hero-eyebrow::after {
+    width: 14px;
+  }
+
+  /* Logo */
+  .hero-logo-wrap {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 10px;
+  }
+
+  .hero-logo-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Main title */
+  .home-title {
+    font-size: clamp(52px, 18vw, 76px);
+    line-height: 0.9;
+  }
+
+  /* Motto */
+  .hero-motto {
+    font-size: clamp(18px, 5.5vw, 28px);
+    gap: 5px;
+    letter-spacing: 0.14em;
+    flex-wrap: wrap;
+  }
+
+  .hero-motto-dot {
+    width: 3px;
+    height: 3px;
+  }
+
+  /* Tagline */
+  .home-tagline {
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 1.55;
+    padding-left: 10px;
+    margin-bottom: 14px;
+  }
+
+  /* Stats */
+  .hero-stats {
+    width: 100%;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .hero-stat {
+    padding: 8px 4px;
+  }
+
+  .hero-stat-n {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+
+  .hero-stat-l {
+    font-size: 6px;
+    letter-spacing: 0.14em;
+  }
+
+  /* CTA button */
+  .btn-gold {
+    max-width: 100%;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  /* Navbar compact */
+  .home-nav {
+    padding: 10px 14px;
+  }
+
+  .home-nav-brand {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+  }
+
+  .home-nav-pill {
+    max-width: 82px;
+    font-size: 8px;
+    padding: 4px 8px;
+  }
+
+  .home-nav-logout {
+    font-size: 8px;
+    padding: 4px 8px;
+  }
+
+  /* Footer */
+  .home-footer {
+    padding: 10px 14px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .home-footer p {
+    font-size: 7px;
+    letter-spacing: 0.08em;
+  }
+
+  /* Sport strip */
+  .sport-strip {
+    padding: 8px 0;
+  }
+
+  .strip-track {
+    gap: 1.5rem;
+  }
+
+  .strip-track span {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+  }
+}
+
+/* =========================================
+   EXTRA SMALL DEVICES
+   ========================================= */
+@media (max-width: 380px) {
+
+  .home-title {
+    font-size: 46px;
+  }
+
+  .hero-motto {
+    font-size: 16px;
+  }
+
+  .home-tagline {
+    font-size: 11px;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+  }
+
+  .hero-stat {
+    width: 100%;
+  }
+
+  .btn-gold {
+    font-size: 13px;
+    padding: 11px 16px;
+  }
+}
