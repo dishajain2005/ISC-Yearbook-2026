@@ -58,7 +58,8 @@ export default function Register() {
       <div className="register-visual">
         <div className="register-visual-bg-num">26</div>
         <div className="register-visual-content">
-          <div className="register-visual-logo">🏆</div>
+          <img src="/iitb-sports-logo.png" alt="IITB Sports" className="login-intro-logo" />
+
           <h1>JOIN THE<br />YEARBOOK</h1>
           <p>IIT Bombay · Sports 2026</p>
         </div>
