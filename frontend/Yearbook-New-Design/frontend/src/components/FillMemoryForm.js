@@ -243,7 +243,8 @@ export default function FillMemoryForm() {
       {/* ── SIDEBAR ── */}
       <aside className="fill-sidebar">
         <div className="fill-sb-logo-row">
-          <div className="fill-sb-logo-circle">🏆</div>
+          <img src="/iitb-sports-logo.png" alt="IITB Sports" className="login-intro-logo" />
+
           <div className="fill-sb-brand">
             ISC YEARBOOK
             <small>2026 Season</small>
