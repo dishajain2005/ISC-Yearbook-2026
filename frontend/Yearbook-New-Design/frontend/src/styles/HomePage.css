@@ -1037,16 +1037,20 @@
 
   /* Button animation */
   .btn-gold {
-    position: relative;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(20px) scale(0.96);
-    animation: buttonReveal 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease,
-      background 0.25s ease;
-  }
+  position: relative;
+  overflow: hidden;
+
+  /* visible immediately */
+  opacity: 1;
+
+  /* elegant entrance */
+  animation: buttonReveal 0.9s cubic-bezier(0.22,1,0.36,1);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
 
   .btn-gold:hover {
     transform: translateY(-4px) scale(1.03);
@@ -1127,16 +1131,17 @@
     }
   }
 
-  @keyframes buttonReveal {
-    from {
-      opacity: 0;
-      transform: translateY(26px) scale(0.92);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+@keyframes buttonReveal {
+  from {
+    transform: translateY(26px) scale(0.92);
+    opacity: 0.2;
   }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
 
   @keyframes buttonShine {
     0% {
