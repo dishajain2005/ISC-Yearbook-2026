@@ -405,10 +405,19 @@
 
 /* ── Desktop ── */
 @media (min-width: 860px) {
-  .home-page { height: 100vh; overflow: hidden; }
 
-  .home-nav { padding: 14px 3rem; }
-  .home-nav-brand { font-size: 12px; }
+  /* Page: fixed to viewport, no scroll ever */
+  .home-page {
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Nav: tighter on desktop */
+  .home-nav {
+    padding: 10px 3rem;
+  }
+  .home-nav-brand { font-size: 11px; }
   .home-nav-email {
     display: block;
     font-family: var(--ff-mono);
@@ -416,69 +425,148 @@
     color: var(--text-dim);
   }
 
+  /*
+   * Hero: two columns side by side.
+   * min-height: 0 is CRITICAL — without it, a flex child won't shrink
+   * below its content size, causing overflow.
+   */
   .home-hero {
     flex-direction: row;
+    align-items: stretch;
     text-align: left;
-    padding: 0 clamp(3rem, 6vw, 5.5rem);
-    gap: 3rem;
+    padding: 0;
+    gap: 0;
+    /* hero takes remaining space between nav + strip + footer */
+    min-height: 0;
   }
 
-  .home-hero::before { width: 500px; height: 500px; }
-
+  /* Left column: scrollable internally if needed, but sized to fit */
   .home-hero-left {
     flex: 1;
+    min-width: 0;
     max-width: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* never let content taller than the flex cell */
+    padding: 0 3rem 0 clamp(2.5rem, 5vw, 5rem);
+    gap: 0;
+    /* key: let it shrink */
     overflow: hidden;
   }
 
+  /* Right column: floating cards panel */
   .home-hero-right {
     display: flex;
     position: relative;
-    flex: 0 0 340px;
+    flex: 0 0 300px;
     align-items: center;
     justify-content: center;
     border-left: 1px solid rgba(37,99,235,0.15);
-    height: 100%;
+    overflow: hidden;
   }
 
-  .home-hero-eyebrow { justify-content: flex-start; }
+  /* Eyebrow: left-aligned, no after-line */
+  .home-hero-eyebrow {
+    justify-content: flex-start;
+    margin-bottom: 6px;
+    font-size: 9px;
+  }
   .home-hero-eyebrow::after { display: none; }
 
-  /* tighten all vertical gaps on desktop so button stays visible */
-  .hero-logo-wrap { margin: 0 0 8px; width: 56px; height: 56px; }
-  .hero-logo-img  { width: 38px; height: 38px; }
+  /* Logo: smaller, less margin */
+  .hero-logo-wrap {
+    width: 48px;
+    height: 48px;
+    margin: 0 0 8px;
+    box-shadow: 0 0 20px rgba(37,99,235,0.2);
+  }
+  .hero-logo-img {
+    width: 32px;
+    height: 32px;
+  }
 
-  .home-hero-eyebrow { margin-bottom: 8px; }
+  /*
+   * Title: use vh-relative sizing so it always fits the screen height.
+   * On a 768px tall screen the hero area is ~768 - 44(nav) - 36(strip) - 36(footer) ≈ 652px.
+   * Three lines at 10vh each = 30vh ≈ 195px — comfortable.
+   */
+  .home-title {
+    font-size: clamp(56px, 9vh, 100px);
+    line-height: 0.9;
+    margin-bottom: 0;
+  }
 
-  .home-title { font-size: clamp(72px, 8.5vw, 108px); }
+  /* Divider: minimal */
+  .hero-divider {
+    width: 36px;
+    height: 2px;
+    margin: 8px 0;
+  }
 
-  .hero-divider { margin: 8px 0; }
+  /* Motto: vh-relative so it never overflows */
+  .hero-motto {
+    font-size: clamp(18px, 3vh, 32px);
+    letter-spacing: 0.18em;
+    justify-content: flex-start;
+    margin-bottom: 4px;
+    gap: 6px;
+  }
 
-  .hero-motto { font-size: clamp(20px, 2.8vw, 34px); margin-bottom: 4px; justify-content: flex-start; }
+  /* Tagline: smaller, tighter */
+  .home-tagline {
+    font-size: clamp(11px, 1.6vh, 14px);
+    line-height: 1.55;
+    margin: 0 0 10px;
+    max-width: 380px;
+    text-align: left;
+  }
 
-  .home-tagline { margin: 0 0 12px; font-size: clamp(12px, 1.2vw, 14px); text-align: left; }
+  /* Stats row */
+  .hero-stats {
+    justify-content: flex-start;
+    max-width: 340px;
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+  .hero-stat {
+    padding: 8px 6px;
+  }
+  .hero-stat-n {
+    font-size: clamp(18px, 2.8vh, 26px);
+  }
+  .hero-stat-l {
+    font-size: 7px;
+    margin-top: 2px;
+  }
 
-  .hero-stats { justify-content: flex-start; max-width: 320px; margin-bottom: 16px; }
+  /* CTA button */
+  .btn-gold {
+    width: auto;
+    padding: 11px 28px;
+    font-size: 14px;
+  }
 
-  .btn-gold { width: auto; }
-
+  /* Right panel decorations */
   .hero-right-glow {
     position: absolute;
-    width: 360px; height: 360px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 65%);
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
   }
 
   .hero-bg-num {
-    font-size: clamp(160px, 20vw, 240px);
+    position: absolute;
+    font-size: clamp(120px, 16vw, 200px);
     color: rgba(37,99,235,0.03);
+    letter-spacing: -6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .hero-cards-overlay {
@@ -488,8 +576,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    padding: 2rem;
+    gap: 14px;
+    padding: 1.5rem;
     z-index: 2;
   }
 
@@ -498,14 +586,14 @@
     border: 1px solid rgba(37,99,235,0.18);
     border-left: 3px solid var(--blue);
     border-radius: 6px;
-    padding: 14px 22px;
-    width: 200px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    padding: 12px 20px;
+    width: 180px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
   }
 
   .hero-card-n {
     font-family: var(--ff-display);
-    font-size: 40px;
+    font-size: 34px;
     color: var(--blue-b);
     line-height: 1;
     display: block;
@@ -513,24 +601,25 @@
 
   .hero-card-l {
     font-family: var(--ff-mono);
-    font-size: 9px;
-    letter-spacing: 0.25em;
+    font-size: 8px;
+    letter-spacing: 0.22em;
     color: var(--blue-mid);
     text-transform: uppercase;
     margin-top: 4px;
     display: block;
   }
 
-  .hero-card:nth-child(1) { animation: floatA 4s ease-in-out infinite; margin-right: 50px; }
-  .hero-card:nth-child(2) { animation: floatB 5s ease-in-out infinite; margin-left: 60px; }
+  .hero-card:nth-child(1) { animation: floatA 4s ease-in-out infinite; margin-right: 40px; }
+  .hero-card:nth-child(2) { animation: floatB 5s ease-in-out infinite; margin-left: 50px; }
   .hero-card:nth-child(3) { animation: floatA 4.5s ease-in-out infinite; margin-right: 20px; }
 
-  @keyframes floatA { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  @keyframes floatB { 0%,100% { transform: translateY(-6px); } 50% { transform: translateY(6px); } }
+  @keyframes floatA { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @keyframes floatB { 0%,100% { transform: translateY(-5px); } 50% { transform: translateY(5px); } }
 
-  .sport-strip { padding: 12px 0; }
-  .strip-track span { font-size: 12px; }
+  /* Strip and footer */
+  .sport-strip { padding: 10px 0; }
+  .strip-track span { font-size: 11px; }
 
-  .home-footer { padding: 12px 3rem; }
+  .home-footer { padding: 10px 3rem; }
   .home-footer p { font-size: 9px; }
 }
