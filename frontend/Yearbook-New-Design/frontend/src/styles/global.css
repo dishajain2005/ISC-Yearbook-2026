@@ -1,7 +1,6 @@
 /* ============================================
    GLOBAL DESIGN SYSTEM — ISC Yearbook 2026
-   Fonts: Anton | Cormorant Garamond | IBM Plex Mono | Inter
-   Theme: Deep Navy + Electric Blue
+   Blue theme — matches Login page
    ============================================ */
 
 *, *::before, *::after {
@@ -11,37 +10,40 @@
 }
 
 :root {
-  /* ── Core palette ── */
   --black:       #080b12;
   --navy:        #0b1221;
   --navy-mid:    #0f1a2e;
-  --navy-light:  #162035;
 
-  /* ── Blue accent ── */
-  --blue:        #2563eb;
-  --blue-b:      #3b82f6;
-  --blue-mid:    #60a5fa;
-  --blue-dim:    #1e3a6e;
-  --blue-bg:     rgba(37, 99, 235, 0.08);
-  --blue-border: rgba(37, 99, 235, 0.2);
-  --blue-glow:   rgba(37, 99, 235, 0.15);
+  /* Blue replaces gold everywhere */
+  --gold:        #2563eb;
+  --gold-bright: #3b82f6;
+  --gold-mid:    #60a5fa;
+  --gold-border: rgba(37, 99, 235, 0.25);
+  --gold-bg:     rgba(37, 99, 235, 0.08);
 
-  /* ── Text ── */
+  --cream:       #fdfaf3;
   --white:       #ffffff;
-  --cream:       #e8edf5;
-  --text-mid:    #94a3b8;
-  --text-muted:  #64748b;
-  --text-dim:    #475569;
+  --text-mid:    #c5d2e0;
+  --text-muted:  #9daabf;
+  --text-dim:    #768699;
+  --red:         #e74c3c;
+  --green:       #2ecc71;
 
-  /* ── Semantic ── */
-  --red:         #ef4444;
-  --green:       #22c55e;
-
-  /* ── Fonts ── */
   --ff-display: 'Anton', sans-serif;
   --ff-serif:   'Cormorant Garamond', serif;
   --ff-mono:    'IBM Plex Mono', monospace;
   --ff-sans:    'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Blue-specific vars (same as Login) */
+  --blue:      #2563eb;
+  --blue-b:    #3b82f6;
+  --blue-mid:  #60a5fa;
+  --blue-dim:  #1e3a6e;
+  --blue-bg:   rgba(37, 99, 235, 0.08);
+  --blue-glow: rgba(37, 99, 235, 0.15);
+  --navy-deep: #080b12;
+  --navy-panel:#0b1221;
+  --navy2:     #0f1a2e;
 }
 
 html { scroll-behavior: smooth; }
@@ -60,16 +62,16 @@ body {
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--navy); }
-::-webkit-scrollbar-thumb { background: var(--blue-dim); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
 
-/* ── Buttons ── */
+/* ── Primary button (blue) ── */
 .btn-gold {
   background: var(--blue);
   color: var(--white);
   border: none;
   font-family: var(--ff-display);
   font-size: 15px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   padding: 13px 28px;
   cursor: pointer;
   border-radius: 6px;
@@ -81,11 +83,11 @@ body {
 .btn-gold:hover {
   background: var(--blue-b);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
 }
 .btn-gold:disabled {
   background: var(--blue-dim);
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.3);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -93,13 +95,13 @@ body {
 
 .btn-ghost {
   background: transparent;
-  border: 1px solid var(--blue-border);
+  border: 1px solid rgba(37, 99, 235, 0.35);
   color: var(--blue-mid);
   font-family: var(--ff-sans);
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.06em;
-  padding: 12px 22px;
+  padding: 12px 24px;
   cursor: pointer;
   border-radius: 6px;
   transition: background 0.2s, border-color 0.2s;
@@ -108,7 +110,7 @@ body {
   gap: 6px;
 }
 .btn-ghost:hover {
-  background: var(--blue-bg);
+  background: rgba(37, 99, 235, 0.12);
   border-color: var(--blue-b);
 }
 
@@ -116,27 +118,27 @@ body {
 .field-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 18px;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 .field-label {
   font-family: var(--ff-mono);
   font-size: 10px;
   letter-spacing: 0.25em;
-  color: var(--text-muted);
+  color: var(--blue-mid);
   text-transform: uppercase;
 }
 .field-input,
 .field-select,
 .field-textarea {
   width: 100%;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--blue-border);
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: none;
+  border-bottom: 2px solid rgba(37, 99, 235, 0.3);
   color: var(--white);
   font-family: var(--ff-sans);
   font-size: 15px;
-  padding: 12px 14px;
+  padding: 12px 0;
   outline: none;
   transition: border-color 0.2s, background 0.2s;
   appearance: none;
@@ -145,65 +147,63 @@ body {
 .field-input:focus,
 .field-select:focus,
 .field-textarea:focus {
-  border-color: var(--blue-b);
-  background: rgba(37,99,235,0.05);
+  border-bottom-color: var(--blue-b);
+  background: rgba(37, 99, 235, 0.04);
 }
 .field-input::placeholder,
-.field-textarea::placeholder {
-  color: var(--text-dim);
-}
+.field-textarea::placeholder { color: var(--text-muted); }
 .field-input:disabled,
-.field-select:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-.field-select option {
-  background: var(--navy-mid);
-  color: var(--cream);
-}
+.field-select:disabled { opacity: 0.4; cursor: not-allowed; }
+.field-select option { background: var(--navy); color: var(--cream); }
 .field-textarea {
   resize: vertical;
   min-height: 120px;
-  padding: 12px 14px;
+  padding: 14px;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-bottom: 2px solid rgba(37, 99, 235, 0.3);
+}
+.field-textarea:focus {
+  border-color: rgba(37, 99, 235, 0.35);
+  border-bottom-color: var(--blue-b);
 }
 
 /* ── Messages ── */
 .msg-error {
-  background: rgba(239,68,68,0.1);
-  border: 1px solid rgba(239,68,68,0.3);
-  border-left: 3px solid var(--red);
-  color: #fca5a5;
+  background: rgba(231, 76, 60, 0.12);
+  border: 1px solid rgba(231, 76, 60, 0.35);
+  border-left: 4px solid var(--red);
+  color: #ffb3b3;
   padding: 12px 16px;
   font-size: 13px;
-  margin-bottom: 14px;
-  letter-spacing: 0.03em;
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
   line-height: 1.5;
-  border-radius: 4px;
+  border-radius: 0 4px 4px 0;
 }
 .msg-success {
-  background: rgba(34,197,94,0.08);
-  border: 1px solid rgba(34,197,94,0.25);
-  border-left: 3px solid var(--green);
-  color: #86efac;
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  border-left: 4px solid var(--green);
+  color: #99ffbb;
   padding: 12px 16px;
   font-size: 13px;
-  margin-bottom: 14px;
-  letter-spacing: 0.03em;
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
   line-height: 1.5;
-  border-radius: 4px;
+  border-radius: 0 4px 4px 0;
 }
 
-/* ── Eyebrow label ── */
+/* ── Eyebrow ── */
 .eyebrow {
   font-family: var(--ff-mono);
-  font-size: 10px;
-  letter-spacing: 0.35em;
+  font-size: 9px;
+  letter-spacing: 0.3em;
   color: var(--blue-mid);
   text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 .eyebrow::before {
   content: '';
@@ -214,33 +214,34 @@ body {
   flex-shrink: 0;
 }
 
-/* ── Divider ── */
+/* ── Rule ── */
 .gold-rule {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--blue-dim), transparent);
+  background: linear-gradient(90deg, transparent, rgba(37,99,235,0.4), transparent);
   margin: 16px 0 20px;
 }
 
 /* ── Corner decorations ── */
 .corner-deco {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  border-color: var(--blue-border);
+  width: 28px;
+  height: 28px;
+  border-color: rgba(37, 99, 235, 0.3);
   border-style: solid;
   pointer-events: none;
 }
-.corner-deco.tl { top: 8px; left: 8px;    border-width: 1px 0 0 1px; }
-.corner-deco.tr { top: 8px; right: 8px;   border-width: 1px 1px 0 0; }
-.corner-deco.bl { bottom: 8px; left: 8px;   border-width: 0 0 1px 1px; }
-.corner-deco.br { bottom: 8px; right: 8px;  border-width: 0 1px 1px 0; }
+.corner-deco.tl { top: 8px; left: 8px;   border-width: 1px 0 0 1px; }
+.corner-deco.tr { top: 8px; right: 8px;  border-width: 1px 1px 0 0; }
+.corner-deco.bl { bottom: 8px; left: 8px;  border-width: 0 0 1px 1px; }
+.corner-deco.br { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; }
 
 /* ── Spinner ── */
 .spinner {
-  width: 16px; height: 16px;
-  border: 2px solid rgba(255,255,255,0.15);
-  border-top-color: var(--white);
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: white;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
   display: inline-block;
@@ -249,21 +250,26 @@ body {
 
 /* ── Page entrance ── */
 @keyframes pageFadeUp {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.page-enter { animation: pageFadeUp 0.45s ease forwards; }
+.page-enter { animation: pageFadeUp 0.5s ease forwards; }
 
 /* ── Loading overlay ── */
 .loading-overlay {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
   background: var(--black);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  z-index: 9999; gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  gap: 16px;
 }
 .loading-ring {
-  width: 48px; height: 48px;
+  width: 54px;
+  height: 54px;
   border: 2px solid rgba(37,99,235,0.2);
   border-top-color: var(--blue-b);
   border-radius: 50%;
@@ -271,12 +277,11 @@ body {
 }
 .loading-overlay p {
   font-family: var(--ff-display);
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.35em;
   color: var(--blue-mid);
 }
 
-/* ── Responsive helpers ── */
 @media (max-width: 768px) {
   .hide-mobile { display: none !important; }
 }

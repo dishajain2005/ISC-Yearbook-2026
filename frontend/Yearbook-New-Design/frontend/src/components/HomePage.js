@@ -8,10 +8,11 @@ const SPORTS = [
   'Athletics','Aquatics','Table Tennis','Lawn Tennis','Weightlifting',
   'Hockey','Ultimate Frisbee','Indian Games','Board Games','Aavhan',
 ];
+
 const SPORTS_LOOP = [...SPORTS, ...SPORTS];
 
 export default function HomePage() {
-  const navigate = useNavigate();
+  const navigate  = useNavigate();
   const [name,  setName]  = useState('');
   const [email, setEmail] = useState('');
 
@@ -19,7 +20,7 @@ export default function HomePage() {
     try {
       const ud = JSON.parse(localStorage.getItem('userData'));
       if (ud) { setName(ud.name || ''); setEmail(ud.email || ''); }
-      else navigate('/');
+      else navigate('/');          // not logged in → back to login
     } catch { navigate('/'); }
   }, [navigate]);
 
@@ -33,27 +34,24 @@ export default function HomePage() {
 
       {/* ── NAV ── */}
       <nav className="home-nav">
-        <div className="home-nav-left">
-          <img src="/iitb-sports-logo.png" alt="IITB Sports" className="home-nav-logo" />
-          <span className="home-nav-brand">ISC YEARBOOK <span>2026</span></span>
-        </div>
+        <span className="home-nav-brand">ISC YEARBOOK 2026</span>
         <div className="home-nav-right">
           {name  && <span className="home-nav-pill">{name}</span>}
-          <button className="home-nav-logout" onClick={handleLogout}>Logout</button>
+          {email && <span className="home-nav-email">{email}</span>}
+          <button className="home-nav-logout" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </nav>
 
       {/* ── HERO ── */}
       <section className="home-hero">
-        <div className="home-hero-glow" />
-        <div className="home-hero-glow2" />
-
-        <div className="home-hero-content">
-          <div className="home-hero-eyebrow">IIT Bombay · Institute Sports Council · 2026</div>
+        <div className="home-hero-left">
+          <div className="home-hero-eyebrow">IIT Bombay · ISC · 2026</div>
 
           <h1 className="home-title">
             <span className="t-white">SPORTS</span>
-            <span className="t-blue">YEAR</span>
+            <span className="t-gold">YEAR</span>
             <span className="t-outline">BOOK</span>
           </h1>
 
@@ -61,18 +59,25 @@ export default function HomePage() {
             Until Victory. Always. — A celebration of every match, every medal, every memory made at IIT Bombay.
           </p>
 
-          <div className="home-hero-actions">
-            <Link to="/fill-memory">
-              <button className="btn-gold">Fill a Memory →</button>
-            </Link>
-            <div className="home-hero-stats">
-              {[['15+','Sports'],['200+','Athletes'],['2026','Season']].map(([n,l]) => (
-                <div className="home-hero-stat" key={l}>
-                  <span className="home-stat-n">{n}</span>
-                  <span className="home-stat-l">{l}</span>
-                </div>
-              ))}
-            </div>
+          <Link to="/fill-memory">
+            <button className="btn-gold">Fill a Memory →</button>
+          </Link>
+        </div>
+
+        <div className="home-hero-right">
+          <div className="hero-right-glow" />
+          <div className="hero-bg-num">2026</div>
+          <div className="hero-cards-overlay">
+            {[
+              { n: '15+',  l: 'Sports'   },
+              { n: '200+', l: 'Athletes' },
+              { n: '2026', l: 'Season'   },
+            ].map(({ n, l }) => (
+              <div className="hero-card" key={l}>
+                <div className="hero-card-n">{n}</div>
+                <div className="hero-card-l">{l}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -83,6 +88,35 @@ export default function HomePage() {
           {SPORTS_LOOP.map((s, i) => <span key={i}>{s}</span>)}
         </div>
       </div>
+
+      {/* ── CONTRIBUTE ── */}
+      <section className="home-contribute">
+        <div>
+          <div className="contribute-label">Your Turn to Shine</div>
+          <h2 className="contribute-h">CONTRIBUTE<br />TO THE YEARBOOK</h2>
+          <p className="contribute-p">
+            Share your memories, photos, and stories with the graduating seniors.
+            Every submission becomes a permanent part of IIT Bombay's sports legacy.
+          </p>
+          <Link to="/fill-memory">
+            <button className="btn-gold">Fill a Memory →</button>
+          </Link>
+        </div>
+
+        <div className="contribute-card">
+          <div className="corner-deco tl" />
+          <div className="corner-deco br" />
+          <div className="contribute-card-icon">✍</div>
+          <h3>LEAVE YOUR MARK</h3>
+          <p>
+            Write about your teammates, coaches, victories, and the moments that made
+            this season unforgettable. Attach a photo and make it yours.
+          </p>
+          <Link to="/fill-memory">
+            <button className="btn-ghost">Open Form →</button>
+          </Link>
+        </div>
+      </section>
 
       {/* ── FOOTER ── */}
       <footer className="home-footer">
