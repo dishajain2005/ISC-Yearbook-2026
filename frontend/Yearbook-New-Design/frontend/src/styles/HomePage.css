@@ -962,3 +962,213 @@
     gap: 26px;
   }
 }
+
+/* =========================================
+   DESKTOP FLOW FIX
+   MOBILE UNTOUCHED
+   ========================================= */
+@media (min-width: 861px) {
+
+  /* Enable scrolling */
+  .home-page {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* Hero should fit better */
+  .home-hero {
+    min-height: calc(100vh - 84px);
+    align-items: center;
+  }
+
+  /* Reduce excessive spacing */
+  .home-hero-left {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Make title slightly more compact */
+  .home-title {
+    font-size: clamp(82px, 9vw, 132px);
+    line-height: 0.84;
+    margin-bottom: 18px;
+  }
+
+  /* Tagline tighter */
+  .home-tagline {
+    margin-bottom: 2rem;
+    max-width: 560px;
+  }
+
+  /* Right side */
+  .hero-cards-overlay {
+    gap: 14px;
+  }
+
+  .hero-card {
+    width: 210px;
+    padding: 16px 22px;
+  }
+
+  .hero-card-n {
+    font-size: 40px;
+  }
+
+  /* Elegant fade/slide entrance */
+  .home-hero-left > * {
+    opacity: 0;
+    animation: heroFadeUp 0.9s ease forwards;
+  }
+
+  .home-hero-eyebrow {
+    animation-delay: 0.08s;
+  }
+
+  .home-title {
+    animation-delay: 0.18s;
+  }
+
+  .home-tagline {
+    animation-delay: 0.32s;
+  }
+
+  /* Button animation */
+  .btn-gold {
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+    animation: buttonReveal 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      background 0.25s ease;
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 34px rgba(212,175,55,0.22);
+  }
+
+  /* Glow sweep effect */
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.22),
+      transparent
+    );
+    transform: skewX(-18deg);
+    animation: buttonShine 3.5s ease infinite;
+  }
+
+  /* Right cards entrance */
+  .hero-card {
+    opacity: 0;
+    animation: cardFloatIn 1s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+
+  .hero-card:nth-child(1) {
+    animation-delay: 0.35s;
+  }
+
+  .hero-card:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .hero-card:nth-child(3) {
+    animation-delay: 0.65s;
+  }
+
+  /* Contribute section reveal */
+  .home-contribute > * {
+    opacity: 0;
+    animation: contributeReveal 1s ease forwards;
+  }
+
+  .home-contribute > *:nth-child(1) {
+    animation-delay: 0.15s;
+  }
+
+  .home-contribute > *:nth-child(2) {
+    animation-delay: 0.35s;
+  }
+
+  /* Smooth section spacing */
+  .home-contribute {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  /* Better footer spacing */
+  .home-footer {
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+  }
+
+  /* Animations */
+  @keyframes heroFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes buttonReveal {
+    from {
+      opacity: 0;
+      transform: translateY(26px) scale(0.92);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes buttonShine {
+    0% {
+      left: -120%;
+    }
+    35% {
+      left: 140%;
+    }
+    100% {
+      left: 140%;
+    }
+  }
+
+  @keyframes cardFloatIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.92);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes contributeReveal {
+    from {
+      opacity: 0;
+      transform: translateY(34px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
