@@ -8,11 +8,10 @@ const SPORTS = [
   'Athletics','Aquatics','Table Tennis','Lawn Tennis','Weightlifting',
   'Hockey','Ultimate Frisbee','Indian Games','Board Games','Aavhan',
 ];
-
 const SPORTS_LOOP = [...SPORTS, ...SPORTS];
 
 export default function HomePage() {
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
   const [name,  setName]  = useState('');
   const [email, setEmail] = useState('');
 
@@ -34,82 +33,52 @@ export default function HomePage() {
 
       {/* ── NAV ── */}
       <nav className="home-nav">
-        <span className="home-nav-brand">ISC YEARBOOK 2026</span>
+        <div className="home-nav-left">
+          <img src="/iitb-sports-logo.png" alt="IITB Sports" className="home-nav-logo" />
+          <span className="home-nav-brand">ISC YEARBOOK <span>2026</span></span>
+        </div>
         <div className="home-nav-right">
-          {name  && <span className="home-nav-pill">{name}</span>}
-          {email && <span className="home-nav-email">{email}</span>}
-          <button className="home-nav-logout" onClick={handleLogout}>
-            Logout
-          </button>
+          {name && <span className="home-nav-pill">{name}</span>}
+          <button className="home-nav-logout" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
 
       {/* ── HERO ── */}
       <section className="home-hero">
-        <div className="home-hero-left">
+        <div className="home-hero-glow" />
+        <div className="home-hero-glow2" />
 
-          {/* IITB Sports logo — matches login-logo-wrap style */}
-          <div className="hero-logo-wrap">
-            <img
-              src="/iitb-sports-logo.png"
-              alt="IIT Bombay Sports"
-              className="hero-logo-img"
-            />
-          </div>
-
-          <div className="home-hero-eyebrow">IIT Bombay · ISC · 2026</div>
+        <div className="home-hero-content">
+          <div className="home-hero-eyebrow">IIT Bombay · Institute Sports Council · 2026</div>
 
           <h1 className="home-title">
             <span className="t-white">SPORTS</span>
-            <span className="t-gold">YEAR</span>
+            <span className="t-blue">YEAR</span>
             <span className="t-outline">BOOK</span>
           </h1>
 
-          <div className="hero-divider" />
-
-          <div className="hero-motto">
-            <span>UNTIL</span>
-            <span className="hero-motto-dot" />
-            <span>VICTORY</span>
-            <span className="hero-motto-dot" />
-            <span>ALWAYS</span>
-          </div>
-
           <p className="home-tagline">
-            A celebration of every match, every medal, every memory made at IIT Bombay.
+            Until Victory. Always. — A celebration of every match, every medal, every memory made at IIT Bombay.
           </p>
 
-          <div className="hero-stats">
-            {[
-              { n: '15+',  l: 'Sports'   },
-              { n: '200+', l: 'Athletes' },
-              { n: '2026', l: 'Season'   },
-            ].map(({ n, l }) => (
-              <div className="hero-stat" key={l}>
-                <span className="hero-stat-n">{n}</span>
-                <span className="hero-stat-l">{l}</span>
-              </div>
-            ))}
+          {/* Highlighted CTA */}
+          <div className="home-cta-wrap">
+            <Link to="/fill-memory">
+              <button className="btn-cta">
+                <span className="btn-cta-icon">✍</span>
+                Fill a Memory
+                <span className="btn-cta-arrow">→</span>
+              </button>
+            </Link>
+            <p className="home-cta-hint">Share your story with the athletes who made this season special</p>
           </div>
 
-          <Link to="/fill-memory">
-            <button className="btn-gold">Fill a Memory →</button>
-          </Link>
-        </div>
-
-        {/* Desktop-only right panel */}
-        <div className="home-hero-right">
-          <div className="hero-right-glow" />
-          <div className="hero-bg-num">2026</div>
-          <div className="hero-cards-overlay">
-            {[
-              { n: '15+',  l: 'Sports'   },
-              { n: '200+', l: 'Athletes' },
-              { n: '2026', l: 'Season'   },
-            ].map(({ n, l }) => (
-              <div className="hero-card" key={l}>
-                <span className="hero-card-n">{n}</span>
-                <span className="hero-card-l">{l}</span>
+          {/* Stats row */}
+          <div className="home-hero-stats">
+            {[['15+','Sports'],['200+','Athletes'],['2026','Season']].map(([n,l]) => (
+              <div className="home-hero-stat" key={l}>
+                <span className="home-stat-n">{n}</span>
+                <span className="home-stat-l">{l}</span>
               </div>
             ))}
           </div>
