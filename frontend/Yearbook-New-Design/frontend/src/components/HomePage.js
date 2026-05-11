@@ -9,7 +9,6 @@ const SPORTS = [
   'Hockey','Ultimate Frisbee','Indian Games','Board Games','Aavhan',
 ];
 
-const SPORTS_LOOP = [...SPORTS, ...SPORTS];
 
 export default function HomePage() {
   const navigate  = useNavigate();
@@ -98,27 +97,11 @@ export default function HomePage() {
         </div>
 
         {/* Desktop-only right panel */}
-        <div className="home-hero-right">
-          <div className="hero-right-glow" />
-          <div className="hero-bg-num">2026</div>
-
-          <div className="hero-cards-overlay">
-            <Link to="/fill-memory">
-              <button className="btn-gold hero-main-btn">
-                Fill a Memory →
-              </button>
-            </Link>
-          </div>
-        </div>
+        
       </section>
 
       {/* ── SPORT MARQUEE ── */}
-      <div className="sport-strip">
-        <div className="strip-track">
-          {SPORTS_LOOP.map((s, i) => <span key={i}>{s}</span>)}
-        </div>
-      </div>
-
+      
       {/* ── FOOTER ── */}
       <footer className="home-footer">
         <p>© 2026 IIT Bombay · Institute Sports Council</p>
