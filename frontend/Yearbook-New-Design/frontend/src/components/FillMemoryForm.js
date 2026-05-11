@@ -83,21 +83,48 @@ function PersonPhoto({ name, sport }) {
   const [valid,   setValid]   = useState(false);
   const [urls,    setUrls]    = useState([]);
 
-  const buildUrls = (n, s) => {
-    if (!n || !s) return [];
-    const folderMap = {
-      'Board Games': 'Board Games', 'Indian Games': 'Indian Games',
-      'Lawn Tennis': 'Lawn Tennis', 'Table Tennis': 'Table Tennis',
-      'Institute Sports Council': 'Council', 'Ultimate Frisbee': 'Frisbee',
-    };
-    const folder = "assets/" + (folderMap[s] || s.replace(/\s+/g, ''));
-    const exts   = ['jpg','jpeg','png','JPG','PNG','heif'];
-    const und    = n.replace(/\s+/g, '_');
-    const cap    = n.split(' ').map(w => w[0].toUpperCase() + w.slice(1).toLowerCase()).join('_');
-    const first  = n.split(' ')[0];
-    const variants = [...new Set([und, cap, first])];
-    return variants.flatMap(v => exts.map(e => `${folder}/${v}.${e}`));
+  // const buildUrls = (n, s) => {
+  //   if (!n || !s) return [];
+  //   const folderMap = {
+  //     'Board Games': 'Board Games', 'Indian Games': 'Indian Games',
+  //     'Lawn Tennis': 'Lawn Tennis', 'Table Tennis': 'Table Tennis',
+  //     'Institute Sports Council': 'Council', 'Ultimate Frisbee': 'Frisbee',
+  //   };
+  //   const folder = "assets/" + (folderMap[s] || s.replace(/\s+/g, ''));
+  //   const exts   = ['jpg','jpeg','png','JPG','PNG','heif'];
+  //   const und    = n.replace(/\s+/g, '_');
+  //   const cap    = n.split(' ').map(w => w[0].toUpperCase() + w.slice(1).toLowerCase()).join('_');
+  //   const first  = n.split(' ')[0];
+  //   const variants = [...new Set([und, cap, first])];
+  //   return variants.flatMap(v => exts.map(e => `${folder}/${v}.${e}`));
+  // };
+
+const buildUrls = (n, s) => {
+  if (!n || !s) return [];
+  const folderMap = {
+    'Board Games': 'Board Games', 'Indian Games': 'Indian Games',
+    'Lawn Tennis': 'Lawn Tennis', 'Table Tennis': 'Table Tennis',
+    'Institute Sports Council': 'Council', 'Ultimate Frisbee': 'Frisbee',
   };
+  const folder = "/assets/" + (folderMap[s] || s.replace(/\s+/g, ''));
+  const exts = ['jpg', 'jpeg', 'png', 'JPG', 'PNG', 'heif'];
+  
+  const und = n.replace(/\s+/g, '_');         // "Bhavin_Shah"
+  const cap = n.split(' ').map(w => w[0].toUpperCase() + w.slice(1).toLowerCase()).join('_');
+  const first = n.split(' ')[0];
+
+  // Add lowercase variants
+  const variants = [...new Set([
+    und, cap, first,
+    und.toLowerCase(),        // "bhavin_shah"
+    cap.toLowerCase(),        // "bhavin_shah"
+    first.toLowerCase(),      // "bhavin"
+    und.toUpperCase(),        // "BHAVIN_SHAH"
+    first.toUpperCase(),      // "BHAVIN"
+  ])];
+
+  return variants.flatMap(v => exts.map(e => `${folder}/${v}.${e}`));
+};
 
   useEffect(() => {
     const list = buildUrls(name, sport);
