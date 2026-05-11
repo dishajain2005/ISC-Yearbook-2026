@@ -43,24 +43,25 @@ export default function HomePage() {
       <section className="home-hero">
         <div className="home-hero-left">
 
-          {/* IITB Sports logo — matches login-logo-wrap style */}
-          <div className="hero-logo-wrap">
-            <img
-              src="/iitb-sports-logo.png"
-              alt="IIT Bombay Sports"
-              className="hero-logo-img"
-            />
-          </div>
+          <div className="hero-topline">
+            <div className="hero-logo-wrap">
+              <img
+                src="/iitb-sports-logo.png"
+                alt="IIT Bombay Sports"
+                className="hero-logo-img"
+              />
+            </div>
 
-          <div className="home-hero-eyebrow">IIT Bombay · ISC · 2026</div>
+            <div className="home-hero-eyebrow">
+              IIT Bombay · ISC · 2026
+            </div>
+          </div>
 
           <h1 className="home-title">
             <span className="t-white">SPORTS</span>
             <span className="t-gold">YEAR</span>
             <span className="t-outline">BOOK</span>
           </h1>
-
-          <div className="hero-divider" />
 
           <div className="hero-motto">
             <span>UNTIL</span>
@@ -74,29 +75,46 @@ export default function HomePage() {
             A celebration of every match, every medal, every memory made at IIT Bombay.
           </p>
 
-          <div className="hero-stats">
-            {[
-              { n: '15+',  l: 'Sports'   },
-              { n: '200+', l: 'Athletes' },
-              { n: '2026', l: 'Season'   },
-            ].map(({ n, l }) => (
-              <div className="hero-stat" key={l}>
-                <span className="hero-stat-n">{n}</span>
-                <span className="hero-stat-l">{l}</span>
-              </div>
-            ))}
+          <div className="hero-actions">
+            <Link to="/fill-memory">
+              <button className="btn-gold">
+                Fill a Memory →
+              </button>
+            </Link>
           </div>
 
-          <Link to="/fill-memory">
-            <button className="btn-gold">Fill a Memory →</button>
-          </Link>
         </div>
 
         {/* Desktop-only right panel */}
+        {/* Desktop-only right panel */}
+        <div className="home-hero-right">
+
+          <div className="hero-right-glow" />
+
+          {/* Faded sports photos */}
+          <div className="hero-photo-stack">
+            <img
+              src="/images/sport1.jpeg"
+              alt="sports"
+              className="hero-photo photo-1"
+            />
+
+            <img
+              src="/images/sport2.jpeg"
+              alt="sports"
+              className="hero-photo photo-2"
+            />
+
+            <img
+              src="/images/sport3.jpeg"
+              alt="sports"
+              className="hero-photo photo-3"
+            />
+          </div>
+
+        </div>
         
       </section>
-
-      {/* ── SPORT MARQUEE ── */}
       
       {/* ── FOOTER ── */}
       <footer className="home-footer">
