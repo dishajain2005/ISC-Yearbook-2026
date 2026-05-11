@@ -1,56 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap');
+/* ==============================
+   HOME PAGE — Navy + Electric Blue (matches Login theme)
+   ============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
-  --blue: #2563eb;
-  --blue-light: #60a5fa;
+  --ff-display: 'Bebas Neue', sans-serif;
+  --ff-serif: 'Cormorant Garamond', Georgia, serif;
+  --ff-mono: 'Space Mono', monospace;
 
-  --bg: #080b12;
-  --panel: #0b1221;
+  /* Blue theme (mirrors Login) */
+  --blue:      #2563eb;
+  --blue-b:    #3b82f6;
+  --blue-mid:  #60a5fa;
+  --blue-dim:  #1e3a6e;
+  --blue-bg:   rgba(37, 99, 235, 0.08);
+  --blue-glow: rgba(37, 99, 235, 0.15);
+  --navy-deep: #080b12;
+  --navy-panel:#0b1221;
+  --navy2:     #0f1a2e;
 
-  --white: #ffffff;
-  --text: rgba(255,255,255,0.75);
-  --muted: rgba(255,255,255,0.45);
+  /* Aliases so existing var() refs still resolve */
+  --black:       var(--navy-deep);
+  --navy:        var(--navy-panel);
+  --gold:        var(--blue-b);
+  --gold-border: rgba(37, 99, 235, 0.18);
+  --gold-bg:     var(--blue-bg);
+  --gold-bright: var(--blue-mid);
+  --cream:       rgba(255,255,255,0.85);
+  --text-dim:    rgba(255,255,255,0.3);
+  --text-muted:  rgba(255,255,255,0.5);
+  --white:       #ffffff;
 }
-
-/* =========================
-   PAGE
-========================= */
 
 .home-page {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top right,
-      rgba(37,99,235,0.10),
-      transparent 35%),
-    var(--bg);
-
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  background: var(--navy-deep);
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
 }
 
-/* =========================
-   NAVBAR
-========================= */
-
+/* ── Navbar ── */
 .home-nav {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 1rem 1.5rem;
-
-  background: rgba(8,11,18,0.9);
-  backdrop-filter: blur(12px);
-
+  padding: 12px 20px;
+  background: rgba(8, 11, 18, 0.96);
   border-bottom: 1px solid rgba(37,99,235,0.15);
+  backdrop-filter: blur(12px);
+  z-index: 100;
 }
 
 .home-nav-brand {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px;
-  letter-spacing: 0.14em;
-  color: white;
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--blue-mid);
+  text-transform: uppercase;
 }
 
 .home-nav-right {
@@ -60,18 +70,17 @@
 }
 
 .home-nav-pill {
-  background: rgba(37,99,235,0.10);
-
-  border: 1px solid rgba(37,99,235,0.20);
-
-  color: var(--blue-light);
-
-  padding: 5px 10px;
-
-  border-radius: 6px;
-
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  background: var(--blue-bg);
+  border: 1px solid rgba(37,99,235,0.22);
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--blue-mid);
+  padding: 4px 10px;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .home-nav-email {
@@ -79,271 +88,1213 @@
 }
 
 .home-nav-logout {
-  border: 1px solid rgba(37,99,235,0.20);
-
   background: transparent;
-
-  color: var(--muted);
-
-  padding: 6px 12px;
-
-  border-radius: 6px;
-
+  border: 1px solid rgba(37,99,235,0.25);
+  color: var(--text-dim);
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  padding: 5px 10px;
   cursor: pointer;
-
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-
-  transition: 0.2s ease;
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
 .home-nav-logout:hover {
-  border-color: var(--blue-light);
-  color: white;
+  border-color: var(--blue-b);
+  color: var(--blue-mid);
+  background: rgba(37,99,235,0.08);
 }
 
-/* =========================
-   HERO
-========================= */
-
+/* ── Hero ── */
 .home-hero {
   flex: 1;
-
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  padding: 3rem 1.5rem;
-
-  text-align: center;
-
+  padding: 0 24px;
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
+/* Primary radial glow — mirrors login-left-glow */
 .home-hero::before {
   content: '';
-
   position: absolute;
-
-  width: 500px;
-  height: 500px;
-
+  width: 340px;
+  height: 340px;
   border-radius: 50%;
-
-  background:
-    radial-gradient(circle,
-      rgba(37,99,235,0.12),
-      transparent 70%);
-
+  background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
   top: 50%;
   left: 50%;
-
   transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Secondary glow bottom-left — mirrors login-left-glow2 */
+.home-hero::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%);
+  bottom: -40px;
+  left: -20px;
+  pointer-events: none;
+}
+
+/* Watermark year */
+.hero-bg-num {
+  position: absolute;
+  font-family: var(--ff-display);
+  font-size: clamp(100px, 40vw, 160px);
+  color: rgba(37,99,235,0.04);
+  letter-spacing: -4px;
+  user-select: none;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 }
 
 .home-hero-left {
   position: relative;
-  z-index: 2;
-
-  max-width: 850px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
 }
 
-/* Watermark */
+.home-hero-right { display: none; }
 
-.hero-bg-num {
-  position: absolute;
-
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(160px, 25vw, 340px);
-
-  color: rgba(37,99,235,0.04);
-
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  pointer-events: none;
-}
-
-/* Eyebrow */
-
+/* Eyebrow — mirrors login-hero-eyebrow */
 .home-hero-eyebrow {
-  font-family: 'Space Mono', monospace;
-
-  font-size: 11px;
-  letter-spacing: 0.25em;
-
-  color: var(--blue-light);
-
-  margin-bottom: 18px;
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--blue-mid);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-/* TITLE */
+.home-hero-eyebrow::before,
+.home-hero-eyebrow::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--blue);
+  display: inline-block;
+}
 
+/* Logo wrap — mirrors login-intro-logo-wrap / login-logo-wrap */
+.hero-logo-wrap {
+  width: 72px;
+  height: 72px;
+  background: rgba(37,99,235,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  box-shadow: 0 0 28px rgba(37,99,235,0.22), 0 0 56px rgba(37,99,235,0.08);
+}
+
+.hero-logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Main title */
 .home-title {
-  font-family: 'Bebas Neue', sans-serif;
-
-  font-size: clamp(72px, 12vw, 150px);
-
-  line-height: 0.82;
-  letter-spacing: 0.04em;
-
-  margin-bottom: 24px;
+  font-family: var(--ff-display);
+  font-size: clamp(68px, 22vw, 100px);
+  line-height: 0.88;
+  letter-spacing: 0.03em;
+  margin-bottom: 0;
 }
 
-.t-white {
-  color: white;
-  display: block;
-}
-
-.t-gold {
-  color: #8fc2ff;
-  display: block;
-}
-
-.t-outline {
+.home-title .t-white  { color: var(--white); display: block; }
+.home-title .t-gold   { color: var(--blue-b); display: block; }
+.home-title .t-outline {
+  -webkit-text-stroke: 1px rgba(37,99,235,0.3);
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255,255,255,0.35);
-
   display: block;
 }
 
-/* TAGLINE */
-
-.home-tagline {
-  max-width: 700px;
-
-  font-family: 'Space Mono', monospace;
-
-  font-size: 15px;
-  line-height: 1.9;
-
-  color: var(--text);
-
-  margin-bottom: 2.5rem;
+/* Divider — mirrors login-hero-divider */
+.hero-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--blue);
+  margin: 12px auto;
 }
 
-/* BUTTON */
+/* UNTIL · VICTORY · ALWAYS */
+.hero-motto {
+  font-family: var(--ff-display);
+  font-size: clamp(24px, 7.5vw, 40px);
+  letter-spacing: 0.2em;
+  color: var(--blue-b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
 
+.hero-motto-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--blue-mid);
+  border-radius: 50%;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* Tagline — mirrors login-hero-tagline */
+.home-tagline {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: clamp(12px, 3.6vw, 15px);
+  color: var(--cream);
+  line-height: 1.7;
+  border-left: 2px solid var(--blue-dim);
+  padding-left: 12px;
+  opacity: 0.85;
+  text-align: left;
+  max-width: 300px;
+  margin: 0 auto 18px;
+}
+
+/* Stats — mirrors login-stat */
+.hero-stats {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.hero-stat {
+  flex: 1;
+  background: rgba(37,99,235,0.06);
+  border: 1px solid rgba(37,99,235,0.15);
+  border-radius: 6px;
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.hero-stat-n {
+  font-family: var(--ff-display);
+  font-size: clamp(22px, 6vw, 30px);
+  color: var(--blue-b);
+  line-height: 1;
+  display: block;
+}
+
+.hero-stat-l {
+  font-family: var(--ff-mono);
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-top: 3px;
+  display: block;
+}
+
+/* CTA — mirrors btn-primary */
 .btn-gold {
+  background: var(--blue);
+  color: var(--white);
   border: none;
-
-  background:
-    linear-gradient(
-      135deg,
-      #2563eb,
-      #3b82f6
-    );
-
-  color: white;
-
-  padding: 18px 40px;
-
-  border-radius: 10px;
-
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  letter-spacing: 0.10em;
-
+  border-radius: 6px;
+  font-family: var(--ff-display);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  padding: 13px 28px;
   cursor: pointer;
-
-  min-width: 280px;
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-
-  box-shadow:
-    0 14px 40px rgba(37,99,235,0.28);
-
-  animation: pulseGlow 3s ease-in-out infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 280px;
+  justify-content: center;
 }
 
 .btn-gold:hover {
-  transform: translateY(-4px) scale(1.03);
-
-  box-shadow:
-    0 20px 50px rgba(37,99,235,0.38);
+  background: var(--blue-b);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37,99,235,0.35);
 }
 
-@keyframes pulseGlow {
-  0%,100% {
-    box-shadow:
-      0 14px 40px rgba(37,99,235,0.28);
-  }
-
-  50% {
-    box-shadow:
-      0 18px 56px rgba(96,165,250,0.42);
-  }
+/* ── Sport marquee strip ── */
+.sport-strip {
+  flex-shrink: 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(37,99,235,0.15);
+  background: var(--navy-panel);
+  padding: 10px 0;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
-.home-footer {
-  padding: 1rem 1.5rem;
-
-  border-top: 1px solid rgba(37,99,235,0.14);
-
+.strip-track {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 2.5rem;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+}
 
-  flex-wrap: wrap;
+.strip-track span {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(37,99,235,0.55);
+  display: inline-flex;
+  align-items: center;
   gap: 10px;
 }
 
-.home-footer p {
-  font-family: 'Space Mono', monospace;
-
-  font-size: 10px;
-  letter-spacing: 0.08em;
-
-  color: var(--muted);
+.strip-track span::before {
+  content: '◆';
+  font-size: 6px;
+  color: var(--blue-b);
 }
 
-/* =========================
-   MOBILE
-========================= */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
-@media (max-width: 768px) {
+/* ── Footer ── */
+.home-footer {
+  flex-shrink: 0;
+  border-top: 1px solid rgba(37,99,235,0.15);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .home-nav-brand {
-    font-size: 18px;
+.home-footer p {
+  font-family: var(--ff-mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+}
+
+/* ── Page enter ── */
+.page-enter {
+  animation: fadeIn 0.4s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Hide contribute section */
+.home-contribute { display: none; }
+
+/* ── Desktop ── */
+@media (min-width: 860px) {
+
+  /* Page: fixed to viewport, no scroll ever */
+  .home-page {
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
   }
 
+  /* Nav: tighter on desktop */
+  .home-nav {
+    padding: 10px 3rem;
+  }
+  .home-nav-brand { font-size: 11px; }
+  .home-nav-email {
+    display: block;
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+  }
+
+  /*
+   * Hero: two columns side by side.
+   * min-height: 0 is CRITICAL — without it, a flex child won't shrink
+   * below its content size, causing overflow.
+   */
+  .home-hero {
+    flex-direction: row;
+    align-items: stretch;
+    text-align: left;
+    padding: 0;
+    gap: 0;
+    /* hero takes remaining space between nav + strip + footer */
+    min-height: 0;
+  }
+
+  /* Left column: scrollable internally if needed, but sized to fit */
+  .home-hero-left {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 3rem 0 clamp(2.5rem, 5vw, 5rem);
+    gap: 0;
+    /* key: let it shrink */
+    overflow: hidden;
+  }
+
+  /* Right column: floating cards panel */
+  .home-hero-right {
+    display: flex;
+    position: relative;
+    flex: 0 0 300px;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(37,99,235,0.15);
+    overflow: hidden;
+  }
+
+  /* Eyebrow: left-aligned, no after-line */
+  .home-hero-eyebrow {
+    justify-content: flex-start;
+    margin-bottom: 6px;
+    font-size: 9px;
+  }
+  .home-hero-eyebrow::after { display: none; }
+
+  /* Logo: smaller, less margin */
+  .hero-logo-wrap {
+    width: 48px;
+    height: 48px;
+    margin: 0 0 8px;
+    box-shadow: 0 0 20px rgba(37,99,235,0.2);
+  }
+  .hero-logo-img {
+    width: 32px;
+    height: 32px;
+  }
+
+  /*
+   * Title: use vh-relative sizing so it always fits the screen height.
+   * On a 768px tall screen the hero area is ~768 - 44(nav) - 36(strip) - 36(footer) ≈ 652px.
+   * Three lines at 10vh each = 30vh ≈ 195px — comfortable.
+   */
   .home-title {
-    font-size: clamp(56px, 18vw, 88px);
+    font-size: clamp(56px, 9vh, 100px);
+    line-height: 0.9;
+    margin-bottom: 0;
   }
 
+  /* Divider: minimal */
+  .hero-divider {
+    width: 36px;
+    height: 2px;
+    margin: 8px 0;
+  }
+
+  /* Motto: vh-relative so it never overflows */
+  .hero-motto {
+    font-size: clamp(18px, 3vh, 32px);
+    letter-spacing: 0.18em;
+    justify-content: flex-start;
+    margin-bottom: 4px;
+    gap: 6px;
+  }
+
+  /* Tagline: smaller, tighter */
   .home-tagline {
-    font-size: 13px;
-    line-height: 1.7;
+    font-size: clamp(11px, 1.6vh, 14px);
+    line-height: 1.55;
+    margin: 0 0 10px;
+    max-width: 380px;
+    text-align: left;
   }
 
+  /* Stats row */
+  .hero-stats {
+    justify-content: flex-start;
+    max-width: 340px;
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+  .hero-stat {
+    padding: 8px 6px;
+  }
+  .hero-stat-n {
+    font-size: clamp(18px, 2.8vh, 26px);
+  }
+  .hero-stat-l {
+    font-size: 7px;
+    margin-top: 2px;
+  }
+
+  /* CTA button */
   .btn-gold {
-    width: 100%;
-    min-width: auto;
+    width: auto;
+    padding: 11px 28px;
+    font-size: 14px;
+  }
 
-    font-size: 18px;
-
-    padding: 16px 20px;
+  /* Right panel decorations */
+  .hero-right-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 65%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
   }
 
   .hero-bg-num {
-    font-size: clamp(120px, 30vw, 200px);
+    position: absolute;
+    font-size: clamp(120px, 16vw, 200px);
+    color: rgba(37,99,235,0.03);
+    letter-spacing: -6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
-  .home-footer {
+  .hero-cards-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    text-align: center;
+    gap: 14px;
+    padding: 1.5rem;
+    z-index: 2;
+  }
+
+  .hero-card {
+    background: rgba(37,99,235,0.06);
+    border: 1px solid rgba(37,99,235,0.18);
+    border-left: 3px solid var(--blue);
+    border-radius: 6px;
+    padding: 12px 20px;
+    width: 180px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  }
+
+  .hero-card-n {
+    font-family: var(--ff-display);
+    font-size: 34px;
+    color: var(--blue-b);
+    line-height: 1;
+    display: block;
+  }
+
+  .hero-card-l {
+    font-family: var(--ff-mono);
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    color: var(--blue-mid);
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .hero-card:nth-child(1) { animation: floatA 4s ease-in-out infinite; margin-right: 40px; }
+  .hero-card:nth-child(2) { animation: floatB 5s ease-in-out infinite; margin-left: 50px; }
+  .hero-card:nth-child(3) { animation: floatA 4.5s ease-in-out infinite; margin-right: 20px; }
+
+  @keyframes floatA { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @keyframes floatB { 0%,100% { transform: translateY(-5px); } 50% { transform: translateY(5px); } }
+
+  /* Strip and footer */
+  .sport-strip { padding: 10px 0; }
+  .strip-track span { font-size: 11px; }
+
+  .home-footer { padding: 10px 3rem; }
+  .home-footer p { font-size: 9px; }
+}
+
+/* =========================================
+   MOBILE FIXES
+   ========================================= */
+@media (max-width: 859px) {
+
+  /* Allow scrolling on mobile */
+  .home-page {
+    height: auto;
+    min-height: 100dvh;
+    max-height: none;
+    overflow-y: auto;
+  }
+
+  /* Hero should start from top instead of centered */
+  .home-hero {
+    justify-content: flex-start;
+    padding: 18px 18px 28px;
+    overflow: visible;
+  }
+
+  /* Reduce giant watermark */
+  .hero-bg-num {
+    font-size: clamp(80px, 28vw, 120px);
+    top: 42%;
+  }
+
+  /* Slightly smaller hero width */
+  .home-hero-left {
+    max-width: 100%;
+  }
+
+  /* Eyebrow */
+  .home-hero-eyebrow {
+    margin-bottom: 10px;
+    font-size: 8px;
+    letter-spacing: 0.24em;
+  }
+
+  .home-hero-eyebrow::before,
+  .home-hero-eyebrow::after {
+    width: 14px;
+  }
+
+  /* Logo */
+  .hero-logo-wrap {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 10px;
+  }
+
+  .hero-logo-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Main title */
+  .home-title {
+    font-size: clamp(52px, 18vw, 76px);
+    line-height: 0.9;
+  }
+
+  /* Motto */
+  .hero-motto {
+    font-size: clamp(18px, 5.5vw, 28px);
+    gap: 5px;
+    letter-spacing: 0.14em;
+    flex-wrap: wrap;
+  }
+
+  .hero-motto-dot {
+    width: 3px;
+    height: 3px;
+  }
+
+  /* Tagline */
+  .home-tagline {
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 1.55;
+    padding-left: 10px;
+    margin-bottom: 14px;
+  }
+
+  /* Stats */
+  .hero-stats {
+    width: 100%;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .hero-stat {
+    padding: 8px 4px;
+  }
+
+  .hero-stat-n {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+
+  .hero-stat-l {
+    font-size: 6px;
+    letter-spacing: 0.14em;
+  }
+
+  /* CTA button */
+  .btn-gold {
+    max-width: 100%;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  /* Navbar compact */
+  .home-nav {
+    padding: 10px 14px;
+  }
+
+  .home-nav-brand {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+  }
+
+  .home-nav-pill {
+    max-width: 82px;
+    font-size: 8px;
+    padding: 4px 8px;
+  }
+
+  .home-nav-logout {
+    font-size: 8px;
+    padding: 4px 8px;
+  }
+
+  /* Footer */
+  .home-footer {
+    padding: 10px 14px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .home-footer p {
+    font-size: 7px;
+    letter-spacing: 0.08em;
+  }
+
+  /* Sport strip */
+  .sport-strip {
+    padding: 8px 0;
+  }
+
+  .strip-track {
+    gap: 1.5rem;
+  }
+
+  .strip-track span {
+    font-size: 8px;
+    letter-spacing: 0.16em;
   }
 }
+
+/* =========================================
+   EXTRA SMALL DEVICES
+   ========================================= */
+@media (max-width: 380px) {
+
+  .home-title {
+    font-size: 46px;
+  }
+
+  .hero-motto {
+    font-size: 16px;
+  }
+
+  .home-tagline {
+    font-size: 11px;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+  }
+
+  .hero-stat {
+    width: 100%;
+  }
+
+  .btn-gold {
+    font-size: 13px;
+    padding: 11px 16px;
+  }
+}
+
+/* =========================================
+   DESKTOP ENHANCEMENT ONLY
+   HOMEPAGE
+   MOBILE UNTOUCHED
+   ========================================= */
+@media (min-width: 861px) {
+
+  /* Bigger + bolder typography */
+  .home-title,
+  .hero-card-n,
+  .contribute-h,
+  .home-nav-brand {
+    font-family: Impact, Haettenschweiler, 'Arial Black', sans-serif;
+    font-weight: 900;
+  }
+
+  /* Hero title */
+  .home-title {
+    font-size: clamp(96px, 12vw, 160px);
+    line-height: 0.82;
+    letter-spacing: 0.03em;
+    margin-bottom: 28px;
+  }
+
+  .home-title .t-white {
+    color: #ffffff;
+    text-shadow: 0 0 24px rgba(255,255,255,0.08);
+  }
+
+  .home-title .t-gold {
+    color: #8fc2ff;
+    text-shadow: 0 0 24px rgba(96,165,250,0.12);
+  }
+
+  .home-title .t-outline {
+    -webkit-text-stroke: 2px rgba(255,255,255,0.45);
+  }
+
+  /* Eyebrow brighter */
+  .home-hero-eyebrow {
+    font-size: 13px;
+    color: #cfe5ff;
+  }
+
+  /* Bigger brighter tagline */
+  .home-tagline {
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 1.8;
+    max-width: 620px;
+    color: rgba(255,255,255,0.92);
+    border-left: 3px solid rgba(96,165,250,0.55);
+    padding-left: 22px;
+  }
+
+  /* Navbar brighter */
+  .home-nav-brand {
+    font-size: 26px;
+    color: #ffffff;
+    letter-spacing: 0.18em;
+  }
+
+  .home-nav-pill,
+  .home-nav-email,
+  .home-footer p {
+    color: rgba(255,255,255,0.82);
+  }
+
+  /* Buttons */
+  .btn-gold {
+    font-size: 18px;
+    padding: 16px 34px;
+    border-radius: 8px;
+  }
+
+  /* Right-side cards */
+  .hero-card {
+    width: 260px;
+    padding: 22px 30px;
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  .hero-card-n {
+    font-size: 60px;
+    color: #ffffff;
+  }
+
+  .hero-card-l {
+    font-size: 12px;
+    color: #d8eaff;
+    letter-spacing: 0.24em;
+  }
+
+  /* Huge background year */
+  .hero-bg-num {
+    font-size: clamp(240px, 26vw, 380px);
+    color: rgba(96,165,250,0.05);
+  }
+
+  /* Contribute section */
+  .contribute-h {
+    font-size: clamp(52px, 6vw, 84px);
+    line-height: 0.9;
+    color: #ffffff;
+  }
+
+  .contribute-p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.78);
+    max-width: 560px;
+  }
+
+  .contribute-card h3 {
+    font-size: 34px;
+    color: #ffffff;
+  }
+
+  .contribute-card p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.78);
+  }
+
+  /* Marquee */
+  .strip-track span {
+    font-size: 18px;
+    color: rgba(255,255,255,0.72);
+  }
+
+  /* Better glow */
+  .hero-right-glow {
+    width: 620px;
+    height: 620px;
+    background: radial-gradient(
+      circle,
+      rgba(37,99,235,0.14) 0%,
+      transparent 70%
+    );
+  }
+
+  /* Wider desktop spacing */
+  .home-hero-left {
+    padding-left: clamp(4rem, 7vw, 7rem);
+  }
+
+  .hero-cards-overlay {
+    gap: 26px;
+  }
+}
+
+/* =========================================
+   DESKTOP FLOW FIX
+   MOBILE UNTOUCHED
+   ========================================= */
+@media (min-width: 861px) {
+
+  /* Enable scrolling */
+  .home-page {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* Hero should fit better */
+  .home-hero {
+    min-height: calc(100vh - 84px);
+    align-items: center;
+  }
+
+  /* Reduce excessive spacing */
+  .home-hero-left {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Make title slightly more compact */
+  .home-title {
+    font-size: clamp(82px, 9vw, 132px);
+    line-height: 0.84;
+    margin-bottom: 18px;
+  }
+
+  /* Tagline tighter */
+  .home-tagline {
+    margin-bottom: 2rem;
+    max-width: 560px;
+  }
+
+  /* Right side */
+  .hero-cards-overlay {
+    gap: 14px;
+  }
+
+  .hero-card {
+    width: 210px;
+    padding: 16px 22px;
+  }
+
+  .hero-card-n {
+    font-size: 40px;
+  }
+
+  /* Elegant fade/slide entrance */
+  .home-hero-left > * {
+    opacity: 0;
+    animation: heroFadeUp 0.9s ease forwards;
+  }
+
+  .home-hero-eyebrow {
+    animation-delay: 0.08s;
+  }
+
+  .home-title {
+    animation-delay: 0.18s;
+  }
+
+  .home-tagline {
+    animation-delay: 0.32s;
+  }
+
+  /* Button animation */
+  .btn-gold {
+  position: relative;
+  overflow: hidden;
+
+  /* visible immediately */
+  opacity: 1;
+
+  /* elegant entrance */
+  animation: buttonReveal 0.9s cubic-bezier(0.22,1,0.36,1);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+  .btn-gold:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 34px rgba(212,175,55,0.22);
+  }
+
+  /* Glow sweep effect */
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.22),
+      transparent
+    );
+    transform: skewX(-18deg);
+    animation: buttonShine 3.5s ease infinite;
+  }
+
+  /* Right cards entrance */
+  .hero-card {
+    opacity: 0;
+    animation: cardFloatIn 1s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+
+  .hero-card:nth-child(1) {
+    animation-delay: 0.35s;
+  }
+
+  .hero-card:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .hero-card:nth-child(3) {
+    animation-delay: 0.65s;
+  }
+
+  /* Contribute section reveal */
+  .home-contribute > * {
+    opacity: 0;
+    animation: contributeReveal 1s ease forwards;
+  }
+
+  .home-contribute > *:nth-child(1) {
+    animation-delay: 0.15s;
+  }
+
+  .home-contribute > *:nth-child(2) {
+    animation-delay: 0.35s;
+  }
+
+  /* Smooth section spacing */
+  .home-contribute {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  /* Better footer spacing */
+  .home-footer {
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+  }
+
+  /* Animations */
+  @keyframes heroFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+@keyframes buttonReveal {
+  from {
+    transform: translateY(26px) scale(0.92);
+    opacity: 0.2;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+  @keyframes buttonShine {
+    0% {
+      left: -120%;
+    }
+    35% {
+      left: 140%;
+    }
+    100% {
+      left: 140%;
+    }
+  }
+
+  @keyframes cardFloatIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.92);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes contributeReveal {
+    from {
+      opacity: 0;
+      transform: translateY(34px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+/* =========================================
+   FORCE SHOW CTA BUTTON
+   DESKTOP ONLY
+   ========================================= */
+@media (min-width: 861px) {
+
+  /* Left side must stay visible */
+  .home-hero-left {
+    overflow: visible !important;
+    position: relative;
+    z-index: 5;
+  }
+
+  /* Force button visibility */
+  .btn-gold {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    position: relative;
+    z-index: 20;
+
+    margin-top: 12px;
+
+    animation: desktopButtonPop 0.9s cubic-bezier(0.22,1,0.36,1);
+
+    transform: translateY(0) scale(1) !important;
+  }
+
+  /* Ensure parent containers don't clip it */
+  .home-hero,
+  .home-page,
+  .home-hero-left {
+    overflow: visible !important;
+  }
+
+  /* Elegant entrance */
+  @keyframes desktopButtonPop {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.92);
+    }
+
+    60% {
+      opacity: 1;
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+/* =========================================
+   DESKTOP CTA POSITION FIX
+   MOBILE UNTOUCHED
+   ========================================= */
+@media (min-width: 861px) {
+
+  /* Keep hero compact */
+  .home-hero-left {
+    justify-content: center;
+    gap: 0;
+  }
+
+  /* Move button directly under tagline */
+  .btn-gold {
+    margin-top: 1rem !important;
+    align-self: flex-start;
+
+    position: relative;
+    z-index: 20;
+
+    width: auto;
+    min-width: 240px;
+
+    display: inline-flex !important;
+  }
+
+  /* Reduce excessive spacing above */
+  .home-title {
+    margin-bottom: 14px;
+  }
+
+  .home-tagline {
+    margin-bottom: 1.2rem;
+  }
+
+  /* Ensure content fits without scrolling */
+  .home-hero {
+    min-height: calc(100vh - 120px);
+    align-items: center;
+  }
+
+  /* Tighten left section */
+  .home-hero-left {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  /* Compact stats/cards */
+  .hero-cards-overlay {
+    gap: 10px;
+  }
+
+  .hero-card {
+    padding: 14px 18px;
+    width: 190px;
+  }
+
+  .hero-card-n {
+    font-size: 34px;
+  }
+
+  .hero-card-l {
+    font-size: 10px;
+  }
+}
+
