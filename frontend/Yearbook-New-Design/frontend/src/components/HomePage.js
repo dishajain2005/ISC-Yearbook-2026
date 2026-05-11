@@ -3,11 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../styles/global.css';
 import '../styles/HomePage.css';
 
-const SPORTS = [
-  'Football','Cricket','Badminton','Basketball','Volleyball','Squash',
-  'Athletics','Aquatics','Table Tennis','Lawn Tennis','Weightlifting',
-  'Hockey','Ultimate Frisbee','Indian Games','Board Games','Aavhan',
-];
+
 
 
 export default function HomePage() {
