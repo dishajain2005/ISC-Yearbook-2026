@@ -1495,3 +1495,41 @@
     }
   }
 }
+
+/* Hero button replacing stats */
+.hero-main-btn {
+  min-width: 320px;
+  min-height: 72px;
+
+  font-size: 24px;
+  letter-spacing: 0.12em;
+
+  padding: 18px 42px;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 16px 42px rgba(37,99,235,0.30);
+
+  animation:
+    heroFadeUp 0.8s ease forwards,
+    pulseGlow 2.8s ease-in-out infinite;
+}
+
+/* Remove old card styling space */
+.hero-cards-overlay {
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow:
+      0 16px 42px rgba(37,99,235,0.28);
+  }
+
+  50% {
+    box-shadow:
+      0 20px 56px rgba(96,165,250,0.42);
+  }
+}

@@ -101,17 +101,13 @@ export default function HomePage() {
         <div className="home-hero-right">
           <div className="hero-right-glow" />
           <div className="hero-bg-num">2026</div>
+
           <div className="hero-cards-overlay">
-            {[
-              { n: '15+',  l: 'Sports'   },
-              { n: '200+', l: 'Athletes' },
-              { n: '2026', l: 'Season'   },
-            ].map(({ n, l }) => (
-              <div className="hero-card" key={l}>
-                <span className="hero-card-n">{n}</span>
-                <span className="hero-card-l">{l}</span>
-              </div>
-            ))}
+            <Link to="/fill-memory">
+              <button className="btn-gold hero-main-btn">
+                Fill a Memory →
+              </button>
+            </Link>
           </div>
         </div>
       </section>
