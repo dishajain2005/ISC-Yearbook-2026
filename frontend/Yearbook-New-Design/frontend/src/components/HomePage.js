@@ -100,6 +100,12 @@ export default function HomePage() {
             />
 
             <img
+              src="/images/sport4.jpeg"
+              alt="sports"
+              className="hero-photo photo-4"
+            />
+
+            <img
               src="/images/sport2.jpeg"
               alt="sports"
               className="hero-photo photo-2"
@@ -109,6 +115,12 @@ export default function HomePage() {
               src="/images/sport3.jpeg"
               alt="sports"
               className="hero-photo photo-3"
+            />
+
+            <img
+              src="/images/sport5.jpeg"
+              alt="sports"
+              className="hero-photo photo-5"
             />
           </div>
 

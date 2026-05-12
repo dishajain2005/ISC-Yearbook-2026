@@ -381,7 +381,26 @@
 
   transform: rotate(-6deg);
 }
+.photo-4 {
+  top: 16%;
+  right: 40%;
 
+  width: 230px;
+  height: 300px;
+
+  transform: rotate(20deg);
+}
+
+.photo-5 {
+  bottom: 10%;
+  right: 2%;
+
+  width: 220px;
+  height: 290px;
+
+  transform: rotate(-20deg);
+  z-index: -1;
+}
 /* hover */
 
 .home-hero-right:hover .photo-1 {
@@ -400,6 +419,13 @@
   transform:
     rotate(-8deg)
     translateY(-10px);
+}
+.home-hero-right:hover .photo-4 {
+  transform: rotate(0deg) translateY(-10px);
+}
+
+.home-hero-right:hover .photo-5 {
+  transform: rotate(10deg) translateY(-10px);
 }
 
 /* =====================================================
