@@ -332,7 +332,7 @@
 }
 .register-visual-content h1 {
   font-family: var(--ff-display);
-  font-size: clamp(32px, 5vw, 48px);
+  font-size: clamp(20px, 5vw, 30px);
   color: var(--blue-mid);
   letter-spacing: 0.06em;
   line-height: 1;
@@ -373,7 +373,7 @@
 }
 .register-sub {
   font-family: var(--ff-serif);
-  font-style: italic;
+  font-style: bold;
   font-size: 15px;
   color: var(--text-mid);
   margin-bottom: 1.6rem;

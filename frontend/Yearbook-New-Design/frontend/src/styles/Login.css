@@ -310,7 +310,7 @@
 }
 .login-form-sub {
   font-family: var(--ff-serif);
-  font-style: italic;
+  font-style: bold;
   font-size: 16px; color: var(--text-muted);
   margin-bottom: 2rem;
 }
