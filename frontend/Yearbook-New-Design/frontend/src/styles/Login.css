@@ -226,9 +226,9 @@
   margin: 14px 0;
 }
 .login-hero-tagline {
-  font-family: var(--ff-serif);
-  font-style: italic;
-  font-size: 13px; color: var(--cream);
+  font-family: var(--ff-display);
+  letter-spacing: 0.16em;
+  font-size: 16px; color: white;
   line-height: 1.7; max-width: 260px;
   border-left: 2px solid var(--blue-dim);
   padding-left: 12px; opacity: 0.85;

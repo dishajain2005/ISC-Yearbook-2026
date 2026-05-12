@@ -197,15 +197,6 @@ export default function Login() {
             </div>
           </div>
         </div>
-
-        <div className="login-stats">
-          {[['15+','Sports'],['200+','Athletes'],['2026','Season']].map(([n,l]) => (
-            <div className="login-stat" key={l}>
-              <span className="login-stat-n">{n}</span>
-              <span className="login-stat-l">{l}</span>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* ── RIGHT PANEL ── */}

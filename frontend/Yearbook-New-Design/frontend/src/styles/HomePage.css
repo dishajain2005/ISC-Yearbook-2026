@@ -212,7 +212,7 @@
 .home-tagline {
   max-width: 620px;
 
-  font-family: var(--ff-serif);
+  font-family: var(--ff-display);
 
   font-size: clamp(18px, 1.9vw, 28px);
 
