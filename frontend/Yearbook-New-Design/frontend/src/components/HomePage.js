@@ -59,8 +59,7 @@ export default function HomePage() {
 
           <h1 className="home-title">
             <span className="t-white">SPORTS</span>
-            <span className="t-gold">YEAR</span>
-            <span className="t-outline">BOOK</span>
+            <span className="t-gold">YEARBOOK</span>
           </h1>
 
           <div className="hero-motto">
