@@ -123,7 +123,7 @@ export default function Register() {
             style={{
               background:'none', border:'none',
               fontFamily:'var(--ff-mono)', fontSize:11,
-              color:'var(--text-dim)', cursor:'pointer',
+              color:'white', cursor:'pointer',
               textDecoration:'underline', textUnderlineOffset:3,
             }}
           >
