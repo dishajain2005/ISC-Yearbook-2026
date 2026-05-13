@@ -117,10 +117,15 @@ export default function HomePage() {
             />
 
             <img
-              src="/images/sport5.jpeg"
+              src="/images/sport6.jpeg"
               alt="sports"
               className="hero-photo photo-5"
             />
+            <img
+              src="/images/sport5.jpeg"
+              alt="sports"
+              className="hero-photo photo-6"
+             />
           </div>
 
         </div>

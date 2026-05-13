@@ -401,6 +401,16 @@
   transform: rotate(-20deg);
   z-index: -1;
 }
+.photo-6 {
+  top: 55%;
+  left: 32%;
+
+  width: 220px;
+  height: 290px;
+
+  transform: rotate(20deg);
+  z-index: -1;
+}
 /* hover */
 
 .home-hero-right:hover .photo-1 {
@@ -426,6 +436,10 @@
 
 .home-hero-right:hover .photo-5 {
   transform: rotate(10deg) translateY(-10px);
+}
+
+.home-hero-right:hover .photo-6 {
+  transform: rotate(-12deg) translateY(-10px);
 }
 
 /* =====================================================

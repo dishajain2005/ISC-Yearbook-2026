@@ -23,7 +23,7 @@ const SPORTS_PLAYERS = {
     "Vijyalaxmi","Riswana", "Kamlesh", "Sanah", "Raunak", "Sukesha", "Mahesh"
   ],
   Badminton: [
-    "Prayash Kumar Sahu", "Sharwanee Sonawane", "Hemant Kabra", "Yashwanth Juluva"
+    "Prayash Kumar Sahu", "Sharvanee Sonawane", "Hemant Kabra", "Yashwanth Juluva"
   ],
   Basketball: [
     "Abhishek", "Aditya", "Akash", "Anshu", "Antara", "Harsh", "Jatin",
