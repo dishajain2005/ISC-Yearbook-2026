@@ -20,7 +20,7 @@ const SPORTS_PLAYERS = {
 
   Athletics: [
     "Amit Kumar", "Raj Yadav", "Sunil Kumar", "Raghav", "Mohsin", "Palak Jain",
-    "Vijyalaxmi","Riswana", "Kamlesh", "Sanah", "Raunak", "Sukesha", "Mahesh"
+    "Vijyalaxmi","Riswana", "Kamlesh", "Raunak", "Sukesha", "Mahesh"
   ],
   Badminton: [
     "Prayash Kumar Sahu", "Sharvanee Sonawane", "Hemant Kabra", "Yashwanth Juluva"
