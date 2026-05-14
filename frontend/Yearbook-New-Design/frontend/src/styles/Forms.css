@@ -658,8 +658,8 @@
 
   /* Compact image frame */
   .photo-frame {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 10px;
     overflow: hidden;
     flex-shrink: 0;
