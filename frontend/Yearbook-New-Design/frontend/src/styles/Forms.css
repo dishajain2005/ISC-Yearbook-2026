@@ -8,7 +8,7 @@
 
 .fill-page {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 400px 1fr;
   min-height: 100vh;
   background: var(--navy-deep);
 }
@@ -44,7 +44,7 @@
 }
 .fill-sb-brand {
   font-family: var(--ff-display);
-  font-size: 13px;
+  font-size: 18px;
   letter-spacing: 0.15em;
   color: var(--blue-mid);
   line-height: 1.2;
@@ -52,14 +52,14 @@
 .fill-sb-brand small {
   display: block;
   font-family: var(--ff-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.18em;
-  color: var(--text-dim);
+  color: var(--white);
   text-transform: uppercase;
 }
 .fill-sb-title {
   font-family: var(--ff-display);
-  font-size: 30px;
+  font-size: 35px;
   color: var(--white);
   line-height: 0.95;
   margin-bottom: 8px;
@@ -67,7 +67,7 @@
 }
 .fill-sb-title span { color: var(--blue-b); }
 .fill-sb-desc {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-muted);
   line-height: 1.75;
   margin-bottom: 1rem;
@@ -83,7 +83,7 @@
   gap: 10px;
 }
 .photo-frame {
-  width: 140px; height: 140px;
+  width: 300px; height: 300px;
   border: 1px solid rgba(37, 99, 235, 0.25);
   background: var(--navy-mid);
   display: flex;
@@ -138,14 +138,15 @@
 .pf-corner.br { bottom:4px; right:4px; border-width: 0 1px 1px 0; }
 
 .photo-name {
-  font-family: var(--ff-serif);
-  font-size: 14px;
-  color: var(--cream);
+  font-family: var(--ff-display);
+  font-size: 30px;
+  color: var(--white);
+  text-transform: uppercase;
   text-align: center;
   margin-top: 4px;
 }
 .photo-sport-label {
-  font-size: 9px;
+  font-size: 16px;
   letter-spacing: 0.2em;
   color: var(--blue-mid);
   text-transform: uppercase;
