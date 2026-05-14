@@ -9,12 +9,12 @@ import API from '../config';
 ══════════════════════════════════════════════ */
 const SPORTS_PLAYERS = {
   "Institute Sports Council": [
-    "Achirangshu Dakua","Raghav Agrawal","Prayash Kumar Sahu", "Antara Pandey", "Aditya Murali", "Rajvardhan Sharma", "Rohit Meena",
+    "Achirangshu Dakua","Raghav Agrawal","Akshara","Prayash Kumar Sahu", "Antara Pandey", "Aditya Murali", "Rajvardhan Sharma", "Rohit Meena",
     "Priyanshu Kumar", "Vishwam Raval", "Bhavin Jain", "Abhay Meena", "Harish Chand", "Hiya Agrawal", "Kalpesh Khare"
   ],
   Aavhan: [
-    "Arhat Gedam", "Sarthak Kabra", "Divakar", "Hemant", "Pratik", "Tansy", 
-    "Preksha", "Kartik", "Mehak", "Sumit", "Rajnandini", "Athena", "Shrutika", 
+     "Sumit Ladha", "Arhat Gedam", "Sarthak Kabra", "Divakar", "Hemant", "Pratik", "Tansy", 
+    "Preksha", "Kartik", "Mehak", "Rajnandini", "Athena", "Shrutika", 
     "Pranab"
  
   ],
