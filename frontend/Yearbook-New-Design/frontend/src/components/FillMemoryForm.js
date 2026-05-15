@@ -13,7 +13,7 @@ const SPORTS_PLAYERS = {
     "Priyanshu Kumar", "Vishwam Raval", "Bhavin Jain", "Abhay Meena", "Harish Chand", "Hiya Agrawal", "Kalpesh Khare"
   ],
   Aavhan: [
-     "Sumit Ladha", "Arhat Gedam", "Sarthak Kabra", "Divakar", "Hemant", "Pratik", "Tansy", 
+     "Sumit Laddha", "Arhat Gedam", "Sarthak Kabra", "Divakar", "Hemant", "Pratik", "Tansy", 
     "Preksha", "Kartik", "Mehak", "Rajnandini", "Athena", "Shrutika", 
     "Pranab"
  
@@ -71,7 +71,9 @@ const SPORTS_PLAYERS = {
     "Paridhi Pamecha","Raaga Tarunya","Sunil Kaswan","Vikas Chahar","Raidaw",
     "Hiya Aggarwal","Priya Tiwari","Sahil","Shraddha","Tamanna Saini"
   ],
-  Weightlifting: ["Anish Kumar Sahu", "Montu Pegu", "Harish Chand", "Priya Singh"],
+  Weightlifting: [
+    "Anish Kumar Sahu", "Montu Pegu", "Harish Chand", "Priya Singh"
+  ],
   "Ultimate Frisbee": ["Arya Thomas", "Tanmay Vhatkar", "Anika Jain", 
     "Rajnandani Jain", "Sanket Mhaske", "Gowshik L", "Ujjwal Mishra", 
     "Sachin Joseph", "Sofia Anjum"
