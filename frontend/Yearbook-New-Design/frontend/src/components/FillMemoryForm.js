@@ -14,7 +14,7 @@ const SPORTS_PLAYERS = {
   ],
   Aavhan: [
      "Sumit Laddha", "Arhat Gedam", "Sarthak Kabra", "Divakar", "Hemant", "Pratik", "Tansy", 
-    "Preksha", "Kartik", "Mehak", "Rajnandini", "Athena", "Shrutika", 
+    "Preksha", "Kartik", "Mehak", "Rajnandini", "Shrutika", 
     "Pranab"
  
   ],
