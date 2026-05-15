@@ -72,8 +72,9 @@ const SPORTS_PLAYERS = {
     "Hiya Aggarwal","Priya Tiwari","Sahil","Shraddha","Tamanna Saini"
   ],
   Weightlifting: ["Anish Kumar Sahu", "Montu Pegu", "Harish Chand", "Priya Singh"],
-  "Ultimate Frisbee": [
-    
+  "Ultimate Frisbee": ["Arya Thomas", "Tanmay Vhatkar", "Anika Jain", 
+    "Rajnandani Jain", "Sanket Mhaske", "Gowshik L", "Ujjwal Mishra", 
+    "Sachin Joseph", "Sofia Anjum"
   ],
 };
 
