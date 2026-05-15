@@ -13,7 +13,7 @@ const SPORTS_PLAYERS = {
     "Priyanshu Kumar", "Vishwam Raval", "Bhavin Jain", "Abhay Meena", "Harish Chand", "Hiya Agrawal", "Kalpesh Khare"
   ],
   Aavhan: [
-     "Sumit Laddha", "Arhat Gedam", "Sarthak Kabra", "Divakar", "Hemant", "Pratik", "Tansy", 
+     "Sumit Laddha", "Arhat Gedam", "Sarthak Kabra", "Divakar", "Hemant", "Praktik", "Tansy", 
     "Preksha", "Kartik", "Mehak", "Rajnandini", "Shrutika", 
     "Pranab"
  
