@@ -257,7 +257,7 @@ export default function FillMemoryForm() {
     try {
       await axios.post(`${API}/submit`, fd, {
         headers: { 'Content-Type': 'multipart/form-data' },
-        timeout: 60000,
+        timeout: 180000,
       });
       setSubmitted(true);
     } catch (err) {
