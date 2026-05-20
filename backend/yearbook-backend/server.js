@@ -489,6 +489,70 @@ app.get('/api/user-info/:email', async (req, res) => {
 });
 
 // Memory submission route with S3 integration
+// app.post('/api/submit', upload.fields([
+//   { name: 'photo', maxCount: 1 }, 
+//   { name: 'video', maxCount: 1 }
+// ]), async (req, res) => {
+//   const { selectedSport, selectedName, description, userName, userEmail } = req.body;
+  
+//   if (!selectedSport || !selectedName || !description || !userName || !userEmail) {
+//     return res.status(400).json({ error: 'All required fields must be provided' });
+//   }
+
+//   let photoUrl = null;
+//   let videoUrl = null;
+//   const uploadedFiles = [];
+
+//   try {
+//     // Upload photo to S3 if provided
+//     if (req.files && req.files.photo && req.files.photo[0]) {
+//       console.log('Uploading photo to S3...');
+//       photoUrl = await uploadToS3(req.files.photo[0], 'photos');
+//       uploadedFiles.push(photoUrl);
+//       console.log('Photo uploaded successfully:', photoUrl);
+//     }
+
+//     // Upload video to S3 if provided
+//     if (req.files && req.files.video && req.files.video[0]) {
+//       console.log('Uploading video to S3...');
+//       videoUrl = await uploadToS3(req.files.video[0], 'videos');
+//       uploadedFiles.push(videoUrl);
+//       console.log('Video uploaded successfully:', videoUrl);
+//     }
+
+//     // Create a new memory document
+//     const newMemory = new Memory({
+//       selectedSport,
+//       selectedName,
+//       description,
+//       userName,
+//       userEmail,
+//       photo: photoUrl,
+//       video: videoUrl,
+//     });
+
+//     // Save the memory document to MongoDB
+//     await newMemory.save();
+//     console.log('Memory saved to database successfully');
+
+//     res.json({ 
+//       message: 'Form submitted successfully and data saved to database',
+//       memoryId: newMemory._id,
+//       photoUrl,
+//       videoUrl
+//     });
+//   } catch (error) {
+//     console.error('Error saving memory:', error);
+    
+//     // Clean up uploaded files if database save fails
+//     for (const fileUrl of uploadedFiles) {
+//       await deleteFromS3(fileUrl);
+//     }
+    
+//     res.status(500).json({ error: 'Error saving memory to database' });
+//   }
+// });
+
 app.post('/api/submit', upload.fields([
   { name: 'photo', maxCount: 1 }, 
   { name: 'video', maxCount: 1 }
@@ -499,56 +563,44 @@ app.post('/api/submit', upload.fields([
     return res.status(400).json({ error: 'All required fields must be provided' });
   }
 
-  let photoUrl = null;
-  let videoUrl = null;
-  const uploadedFiles = [];
-
   try {
-    // Upload photo to S3 if provided
-    if (req.files && req.files.photo && req.files.photo[0]) {
-      console.log('Uploading photo to S3...');
-      photoUrl = await uploadToS3(req.files.photo[0], 'photos');
-      uploadedFiles.push(photoUrl);
-      console.log('Photo uploaded successfully:', photoUrl);
-    }
-
-    // Upload video to S3 if provided
-    if (req.files && req.files.video && req.files.video[0]) {
-      console.log('Uploading video to S3...');
-      videoUrl = await uploadToS3(req.files.video[0], 'videos');
-      uploadedFiles.push(videoUrl);
-      console.log('Video uploaded successfully:', videoUrl);
-    }
-
-    // Create a new memory document
+    // Save to MongoDB immediately without waiting for S3
     const newMemory = new Memory({
       selectedSport,
       selectedName,
       description,
       userName,
       userEmail,
-      photo: photoUrl,
-      video: videoUrl,
+      photo: null,
+      video: null,
     });
 
-    // Save the memory document to MongoDB
     await newMemory.save();
-    console.log('Memory saved to database successfully');
+    console.log('Memory saved to database:', newMemory._id);
 
+    // Respond to frontend immediately
     res.json({ 
       message: 'Form submitted successfully and data saved to database',
       memoryId: newMemory._id,
-      photoUrl,
-      videoUrl
     });
+
+    // Upload to S3 in background AFTER responding
+    if (req.files?.photo?.[0]) {
+      uploadToS3(req.files.photo[0], 'photos')
+        .then(url => Memory.findByIdAndUpdate(newMemory._id, { photo: url }))
+        .then(() => console.log('Photo uploaded and saved for memory:', newMemory._id))
+        .catch(err => console.error('Background photo upload failed:', err));
+    }
+
+    if (req.files?.video?.[0]) {
+      uploadToS3(req.files.video[0], 'videos')
+        .then(url => Memory.findByIdAndUpdate(newMemory._id, { video: url }))
+        .then(() => console.log('Video uploaded and saved for memory:', newMemory._id))
+        .catch(err => console.error('Background video upload failed:', err));
+    }
+
   } catch (error) {
     console.error('Error saving memory:', error);
-    
-    // Clean up uploaded files if database save fails
-    for (const fileUrl of uploadedFiles) {
-      await deleteFromS3(fileUrl);
-    }
-    
     res.status(500).json({ error: 'Error saving memory to database' });
   }
 });
