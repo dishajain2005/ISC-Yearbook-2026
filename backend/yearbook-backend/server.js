@@ -133,7 +133,7 @@ const uploadToS3 = async (file, folder) => {
 
   try {
     await s3Client.send(command);
-    const fileUrl = `https://${bucketName}.s3.${process.env.AWS_REGION || 'us-east-1'}.amazonaws.com/${fileName}`;
+    const fileUrl = `https://${bucketName}.s3.${process.env.AWS_REGION || 'ap-south-1'}.amazonaws.com/${fileName}`;
     return fileUrl;
   } catch (error) {
     console.error('S3 upload error:', error);
