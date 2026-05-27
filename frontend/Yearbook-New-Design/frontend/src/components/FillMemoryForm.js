@@ -63,7 +63,8 @@ const SPORTS_PLAYERS = {
     "Vishwam Raval", "Pratyush Kumar", "Kushagra Gupta"
   ],
   "Table Tennis": [
-    "Bhavin", "Dhriti", "Atharva", "Shubhi", "Rohan", "Shubham", "Leena", "Soham", "Dhruv"
+    "Bhavin", "Dhriti", "Atharva", "Shubhi", "Rohan", 
+    "Shubham", "Leena", "Soham", "Dhruv", "Priyanshi Fogat"
   ],
   Volleyball: [
     "Abhay Meena","Anish","Ahmad","Akshara Naik","Arun Anna","Binay Kr",
