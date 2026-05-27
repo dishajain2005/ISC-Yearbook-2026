@@ -243,10 +243,10 @@ export default function Login() {
               <button className="login-link" onClick={openReset} disabled={loading}>
                 Forgot password?
               </button>
-              <button className="login-link"
+              {/* <button className="login-link"
                 onClick={() => navigate('/alumni-register')} disabled={loading}>
                 Alumni? Register here
-              </button>
+              </button> */}
             </div>
           </>
         ) : (
