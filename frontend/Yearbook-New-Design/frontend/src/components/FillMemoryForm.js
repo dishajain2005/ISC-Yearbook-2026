@@ -52,7 +52,7 @@ const SPORTS_PLAYERS = {
   ],
   "Indian Games": [
     "Anandhita","Ankit Raj","Anushka","Khushbu","Naveen","Nenavath Anusha","Parshva",
-    "Prasanna Nage","Prem","Prince","Priyank","Priyanshu","Rahul Naik","Riswana","Sai Srivan Teja","Saima",
+    "Prasanna Nage","Prem","Priyanshu","Rahul Naik","Riswana","Sai Srivan Teja","Saima",
     "Sanjana","Sarthak Kabra","Vaishnavi","Vijaylaxmi","Vikas","Vishal","Yashasree"
   ],
   "Lawn Tennis": [
