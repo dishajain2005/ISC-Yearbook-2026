@@ -10,7 +10,7 @@ import API from '../config';
 const SPORTS_PLAYERS = {
   "Institute Sports Council": [
     "Achirangshu Dakua","Raghav Agrawal","Akshara","Prayash Kumar Sahu", "Antara Pandey", "Aditya Murali", "Rajvardhan Sharma", "Rohit Meena",
-    "Priyanshu Kumar", "Vishwam Raval", "Bhavin Jain", "Abhay Meena", "Harish Chand", "Hiya Agrawal", "Kalpesh Khare"
+    "Priyanshu Kumar", "Vishwam Raval", "Bhavin Jain", "Abhay Meena", "Harish Chand", "Hiya Agrawal", "Kalpesh Khare", "Phalansh"
   ],
   Aavhan: [
      "Sumit Laddha", "Arhat Gedam", "Sarthak Kabra", "Divakar", "Hemant", "Praktik", "Tansy", 
@@ -70,7 +70,7 @@ const SPORTS_PLAYERS = {
     "Abhay Meena","Anish","Ahmad","Akshara Naik","Arun Anna","Binay Kr",
     "Deeksha Diwakar","Himanshu","Kajal Gupta","Mohammad Kadri","Neeraj Bajiya",
     "Paridhi Pamecha","Raaga Tarunya","Sunil Kaswan","Vikas Chahar","Raidaw",
-    "Hiya Aggarwal","Priya Tiwari","Sahil","Shraddha","Tamanna Saini"
+    "Hiya Aggarwal","Priya Tiwari","Sahil","Shraddha","Tamanna Saini", "Ashritha K", "Manasvi"
   ],
   Weightlifting: [
     "Anish Kumar Sahu", "Montu Pegu", "Harish Chand", "Priya Singh"
