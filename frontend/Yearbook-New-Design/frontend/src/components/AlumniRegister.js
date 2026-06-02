@@ -83,7 +83,7 @@ export default function AlumniRegister() {
 
         <div
           className="pe_verify_email"
-          data-client-id="15525971141294700440"
+          data-client-id="13369435076503135528"
           style={{ marginBottom: 16 }}
         />
 
