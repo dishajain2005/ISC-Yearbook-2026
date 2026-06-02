@@ -270,7 +270,7 @@ export default function Login() {
                 <p style={{ fontSize:13, color:'var(--text-muted)', marginBottom:14, lineHeight:1.7 }}>
                   Verify your <strong style={{ color:'var(--blue-mid)' }}>@iitb.ac.in</strong> email to receive a reset token.
                 </p>
-                <div className="pe_verify_email" data-client-id="15525971141294700440" />
+                <div className="pe_verify_email" data-client-id="13369435076503135528" />
               </div>
             )}
 
