@@ -239,23 +239,51 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+// app.post('/api/register', async (req, res) => {
+//   const { name, email, password } = req.body;
+  
+//   if (!name || !email || !password) {
+//     return res.status(400).json({ error: 'All fields are required' });
+//   }
+
+//   try {
+//     const existingUser = await User.findOne({ email });
+//     if (existingUser) {
+//       return res.status(400).json({ error: 'User already exists' });
+//     }
+    
+//     const hashedPassword = await bcrypt.hash(password, 12);
+//     const newUser = new User({ name, email, password: hashedPassword });
+//     await newUser.save();
+    
+//     res.json({ message: 'User registered successfully' });
+//   } catch (error) {
+//     console.error('Registration error:', error);
+//     res.status(500).json({ error: 'Error registering user' });
+//   }
+// });
+
 app.post('/api/register', async (req, res) => {
   const { name, email, password } = req.body;
-  
-  if (!name || !email || !password) {
+
+  if (!name || !email || !password)
     return res.status(400).json({ error: 'All fields are required' });
-  }
+
+  // Domain validation (replaces phone.email)
+  const allowedDomains = ['@iitb.ac.in', '@gmail.com'];
+  const isAllowed = allowedDomains.some(d => email.endsWith(d));
+  if (!isAllowed)
+    return res.status(400).json({ error: 'Only @iitb.ac.in or @gmail.com emails are allowed' });
 
   try {
     const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    if (existingUser)
       return res.status(400).json({ error: 'User already exists' });
-    }
-    
+
     const hashedPassword = await bcrypt.hash(password, 12);
     const newUser = new User({ name, email, password: hashedPassword });
     await newUser.save();
-    
+
     res.json({ message: 'User registered successfully' });
   } catch (error) {
     console.error('Registration error:', error);
